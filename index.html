@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Dr. Scharschuh, Zeißler & Partner – Management & Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ╔══════════════════════════════════════════════════════╗
+   ║  DESIGN TOKENS – LIGHT MODE (PDF-Vorlage)           ║
+   ╚══════════════════════════════════════════════════════╝ */
+:root {
+  /* Backgrounds */
+  --bg-base:      #ffffff;
+  --bg-alt:       #f5f7fa;
+  --bg-hero:      #eaecf2;
+  --bg-dark:      #1a2640;
+  --bg-dark2:     #111c30;
+
+  /* Surface / Card */
+  --surface:      #ffffff;
+  --surface-dark: rgba(255,255,255,0.06);
+  --glass-dark:   rgba(255,255,255,0.1);
+
+  /* Brand */
+  --brand:        #1a2640;
+  --brand-hover:  #0f1c2e;
+  --accent:       #1a2640;
+  --accent2:      #243654;
+  --accent-grad:  linear-gradient(135deg, #1a2640 0%, #243654 100%);
+  --green:        #2d7a4f;
+  --green2:       #235d3c;
+
+  /* Text */
+  --tx-base:      #1a2640;
+  --tx-soft:      #4a5568;
+  --tx-muted:     #718096;
+  --tx-on-dark:   #ffffff;
+  --tx-muted-dark:rgba(255,255,255,0.6);
+
+  /* Borders */
+  --border:       #e2e8f0;
+  --border-dark:  rgba(255,255,255,0.1);
+  --card-accent:  4px solid #1a2640;
+  --card-accent-dark: 4px solid rgba(255,255,255,0.55);
+
+  /* Nav */
+  --nav-bg:       rgba(26,38,64,0.95);
+  --nav-tx:       rgba(255,255,255,0.7);
+  --nav-tx-hover: #ffffff;
+
+  /* Shadows */
+  --sh-sm:  0 1px 4px rgba(0,0,0,0.07);
+  --sh-md:  0 4px 16px rgba(0,0,0,0.1);
+  --sh-glow:0 6px 24px rgba(26,38,64,0.30);
+
+  /* Transitions */
+  --tr: color .25s, background-color .25s, border-color .25s, box-shadow .25s;
+}
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  DESIGN TOKENS – DARK MODE                          ║
+   ╚══════════════════════════════════════════════════════╝ */
+[data-theme="dark"] {
+  --bg-base:      #0a0e18;
+  --bg-alt:       #0e1422;
+  --bg-hero:      #06090f;
+  --bg-dark:      #06090f;
+  --bg-dark2:     #040710;
+
+  --surface:      rgba(255,255,255,0.045);
+  --surface-dark: rgba(255,255,255,0.06);
+  --glass-dark:   rgba(255,255,255,0.1);
+
+  --brand:        #ffffff;
+  --brand-hover:  #e2e8f0;
+  --accent:       #e74c3c;
+  --accent2:      #243654;
+
+  --tx-base:      #d8e0ee;
+  --tx-soft:      #a0aec0;
+  --tx-muted:     #6b7a94;
+  --tx-on-dark:   #ffffff;
+  --tx-muted-dark:rgba(255,255,255,0.55);
+
+  --border:       rgba(255,255,255,0.08);
+  --border-dark:  rgba(255,255,255,0.1);
+  --card-accent:  4px solid rgba(255,255,255,0.55);
+  --card-accent-dark: 4px solid rgba(255,255,255,0.35);
+
+  --nav-bg:       rgba(6,9,15,0.95);
+
+  --sh-sm:  0 1px 4px rgba(0,0,0,0.35);
+  --sh-md:  0 4px 16px rgba(0,0,0,0.5);
+  --sh-glow:0 6px 24px rgba(26,38,64,0.45);
+}
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  RESET & BASE                                       ║
+   ╚══════════════════════════════════════════════════════╝ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg-base);
+  color: var(--tx-base);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: var(--tr);
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  TYPOGRAPHY                                         ║
+   ╚══════════════════════════════════════════════════════╝ */
+.lbl {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .9rem;
+}
+.lbl::before { content: ''; display: block; width: 20px; height: 1.5px; background: currentColor; }
+
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-weight: 800; letter-spacing: -.03em;
+  line-height: 1.1; margin-bottom: .7rem;
+  color: var(--tx-base);
+  transition: color .25s;
+}
+.title-on-dark { color: #fff; }
+
+.subtitle {
+  font-size: .95rem; color: var(--tx-muted);
+  max-width: 520px; line-height: 1.7; margin-bottom: 2.8rem;
+  transition: color .25s;
+}
+.subtitle-on-dark { color: var(--tx-muted-dark); }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  LAYOUT                                             ║
+   ╚══════════════════════════════════════════════════════╝ */
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 5%; }
+.sec  { padding: 90px 0; }
+.sec-sm { padding: 60px 0; }
+
+.sec-light { background: var(--bg-base); transition: background .25s; }
+.sec-alt   { background: var(--bg-alt);  transition: background .25s; }
+.sec-navy  { background: var(--bg-dark); transition: background .25s; }
+.sec-navy2 { background: var(--bg-dark2);transition: background .25s; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  NAV                                                ║
+   ╚══════════════════════════════════════════════════════╝ */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  height: 66px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background .3s;
+}
+.nav-inner {
+  max-width: 1140px; margin: 0 auto; padding: 0 5%;
+  height: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo img {
+  height: 36px;
+  filter: brightness(0) invert(1);
+  transition: opacity .2s;
+}
+.nav-logo img:hover { opacity: .8; }
+.nav-logo-text { color: #fff; font-weight: 800; font-size: 1.05rem; }
+
+.nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+.nav-links a {
+  color: var(--nav-tx); font-size: .83rem; font-weight: 500;
+  letter-spacing: .05em; text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--nav-tx-hover); }
+.nav-pill {
+  background: var(--accent-grad); color: #fff !important;
+  padding: .42rem 1.1rem; border-radius: 4px;
+  font-weight: 700 !important;
+  box-shadow: var(--sh-glow);
+  transition: opacity .2s, transform .15s !important;
+}
+.nav-pill:hover { opacity: .88; transform: translateY(-1px); }
+
+/* Theme toggle */
+.theme-btn {
+  position: relative;
+  width: 44px; height: 26px; border-radius: 13px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer; flex-shrink: 0;
+  transition: background .3s, border-color .3s, box-shadow .3s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.theme-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: 0 0 12px rgba(255,255,255,0.1);
+}
+.theme-btn-knob {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), background .3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+.theme-btn-knob svg {
+  width: 11px; height: 11px;
+  position: absolute;
+  transition: opacity .25s, transform .3s;
+}
+.theme-btn-knob .icon-moon { opacity: 1; transform: rotate(0deg); color: #1a2640; }
+.theme-btn-knob .icon-sun  { opacity: 0; transform: rotate(90deg); color: #f59e0b; }
+[data-theme="dark"] .theme-btn-knob { transform: translateX(18px); background: #1a2640; }
+[data-theme="dark"] .theme-btn { background: rgba(78,124,255,0.2); border-color: rgba(78,124,255,0.35); }
+[data-theme="dark"] .theme-btn:hover { background: rgba(78,124,255,0.3); box-shadow: 0 0 14px rgba(78,124,255,0.2); }
+[data-theme="dark"] .theme-btn-knob .icon-moon { opacity: 0; transform: rotate(-90deg); }
+[data-theme="dark"] .theme-btn-knob .icon-sun  { opacity: 1; transform: rotate(0deg); }
+
+/* Burger */
+.burger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 38px; height: 38px; background: none; border: none; cursor: pointer; padding: 4px;
+}
+.burger span {
+  display: block; height: 2px; width: 100%; background: #fff; border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile overlay */
+#mob {
+  display: none; position: fixed; inset: 0; top: 66px; z-index: 290;
+  background: rgba(6,9,15,.97); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 2.2rem;
+  opacity: 0; transform: translateY(-10px); pointer-events: none;
+  transition: opacity .3s, transform .3s;
+}
+#mob.on { display: flex; opacity: 1; transform: none; pointer-events: all; }
+#mob a {
+  color: #fff; font-size: 1.45rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; transition: color .2s;
+}
+#mob a:hover { color: var(--accent); }
+.mob-cta {
+  background: var(--accent-grad) !important;
+  padding: .7rem 2.4rem; border-radius: 6px;
+  box-shadow: var(--sh-glow); font-size: .95rem !important;
+}
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  TOPBAR                                             ║
+   ╚══════════════════════════════════════════════════════╝ */
+.topbar {
+  background: var(--bg-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: .45rem 5%; margin-top: 66px;
+  display: flex; align-items: center; justify-content: flex-end; gap: 2rem;
+  font-size: .8rem;
+  transition: background .25s;
+}
+.topbar a {
+  color: rgba(255,255,255,.6); transition: color .2s;
+  display: flex; align-items: center; gap: .4rem;
+}
+.topbar a:hover { color: #fff; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  HERO                                               ║
+   ╚══════════════════════════════════════════════════════╝ */
+#hero {
+  background: var(--bg-hero);
+  min-height: 92svh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 60px 5% 80px;
+  position: relative; overflow: hidden;
+  transition: background .25s;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('assets/images/hero-bg.jpg') center/cover no-repeat;
+  opacity: .06;
+  transition: opacity .3s;
+}
+[data-theme="dark"] .hero-bg { opacity: .12; }
+
+/* Dark mode hero gets gradient overlay */
+[data-theme="dark"] #hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(26,38,64,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-contacts {
+  display: flex; gap: 2rem; margin-bottom: 3.5rem;
+  z-index: 1; flex-wrap: wrap; justify-content: center;
+}
+.h-contact {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.1rem 2.4rem;
+  position: relative; min-width: 250px; text-align: center;
+  box-shadow: var(--sh-sm);
+  transition: background .25s, border-color .25s, box-shadow .25s;
+}
+.h-contact:hover { box-shadow: var(--sh-md); }
+.h-icon {
+  position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; color: #fff;
+  transition: background .25s;
+}
+[data-theme="dark"] .h-icon { background: var(--accent); }
+.h-contact a, .h-contact p { color: var(--tx-base); font-size: .9rem; font-weight: 600; transition: color .25s; }
+.h-contact a:hover { color: var(--accent); }
+
+.hero-logo {
+  height: 140px; margin: 0 auto 2.4rem; z-index: 1;
+  transition: filter .3s;
+}
+/* Light mode: dark logo; dark mode: invert to white */
+[data-theme="light"] .hero-logo { filter: none; }
+[data-theme="dark"]  .hero-logo { filter: brightness(0) invert(1); }
+
+.hero-name {
+  font-size: clamp(1.9rem, 5vw, 3.4rem);
+  font-weight: 900; letter-spacing: -.03em;
+  color: var(--tx-base); line-height: 1.05;
+  z-index: 1; margin-bottom: .6rem;
+  transition: color .25s;
+}
+[data-theme="dark"] .hero-name { color: #fff; }
+
+.hero-sub {
+  font-size: 1.15rem; color: var(--tx-muted);
+  letter-spacing: .1em; text-transform: uppercase;
+  z-index: 1; margin-bottom: 2.4rem;
+  transition: color .25s;
+}
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; z-index: 1; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--accent-grad); color: #fff;
+  padding: .85rem 2rem; border-radius: 5px;
+  font-weight: 700; font-size: .93rem;
+  box-shadow: var(--sh-glow);
+  transition: transform .15s, box-shadow .2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(26,38,64,0.50); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border: 1.5px solid var(--border);
+  color: var(--tx-base);
+  padding: .85rem 2rem; border-radius: 5px;
+  font-weight: 600; font-size: .93rem;
+  transition: background .2s, border-color .2s, transform .15s, color .25s;
+  background: var(--surface);
+}
+.btn-ghost:hover { border-color: var(--brand); background: var(--bg-alt); transform: translateY(-2px); }
+[data-theme="dark"] .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
+[data-theme="dark"] .btn-ghost:hover { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.1); }
+
+.hero-stats {
+  display: flex; gap: 3.5rem; justify-content: center;
+  flex-wrap: wrap; margin-top: 4rem; z-index: 1;
+}
+.stat-n {
+  font-size: 2.2rem; font-weight: 900; color: var(--bg-dark); line-height: 1;
+  transition: color .25s;
+}
+[data-theme="dark"] .stat-n { color: #fff; }
+.stat-l {
+  font-size: .7rem; color: var(--tx-muted); letter-spacing: .1em;
+  text-transform: uppercase; margin-top: .25rem;
+  transition: color .25s;
+}
+
+.scroll-cue {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  z-index: 1; color: var(--tx-muted); font-size: .7rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  animation: bob 2.5s ease-in-out infinite;
+  transition: color .25s;
+}
+.scroll-cue::after { content: '↓'; font-size: .95rem; }
+@keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  DIVIDER                                            ║
+   ╚══════════════════════════════════════════════════════╝ */
+.divider {
+  height: 1px; width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(26,38,64,0.40), transparent);
+}
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  CARDS – LIGHT BORDERED (PDF style)                 ║
+   ╚══════════════════════════════════════════════════════╝ */
+.lcard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: var(--card-accent);
+  border-radius: 7px; padding: 1.7rem 1.8rem;
+  box-shadow: var(--sh-sm);
+  transition: background .25s, border-color .25s, box-shadow .2s, transform .2s;
+}
+.lcard:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+.lcard-t { font-size: .97rem; font-weight: 700; color: var(--tx-base); margin-bottom: .5rem; transition: color .25s; }
+.lcard-p { font-size: .87rem; color: var(--tx-soft); line-height: 1.65; transition: color .25s; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  CARDS – DARK GLASS (on navy sections)              ║
+   ╚══════════════════════════════════════════════════════╝ */
+.dcard {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px; padding: 1.8rem;
+  transition: background .25s, border-color .25s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.dcard::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 0; background: var(--accent-grad);
+  transition: height .35s ease, background .25s;
+}
+.dcard:hover { background: rgba(255,255,255,.09); border-color: rgba(26,38,64,0.25); transform: translateY(-3px); }
+.dcard:hover::before { height: 100%; }
+.dcard-icon { font-size: 1.45rem; margin-bottom: 1rem; }
+.dcard-t { font-size: .97rem; font-weight: 700; color: #fff; margin-bottom: .45rem; }
+.dcard-p { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.65; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  PORTFOLIO SECTION                                  ║
+   ╚══════════════════════════════════════════════════════╝ */
+#portfolio { background: var(--bg-dark); transition: background .25s; }
+.port-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.port-card {
+  text-align: center;
+  transition: transform .25s;
+}
+.port-card:hover { transform: translateY(-5px); }
+.port-circle {
+  width: 190px; height: 190px; border-radius: 50%;
+  overflow: hidden; margin: 0 auto 1.4rem;
+  border: 2px solid rgba(255,255,255,.15);
+  transition: border-color .2s;
+}
+.port-card:hover .port-circle { border-color: rgba(26,38,64,0.50); }
+.port-circle img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.port-card:hover .port-circle img { transform: scale(1.08); }
+.port-t { font-size: .97rem; font-weight: 700; color: #fff; margin-bottom: .5rem; }
+.port-p { font-size: .85rem; color: rgba(255,255,255,.6); line-height: 1.65; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  GRID LAYOUTS                                       ║
+   ╚══════════════════════════════════════════════════════╝ */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  SACHVERSTÄNDIGE                                    ║
+   ╚══════════════════════════════════════════════════════╝ */
+#sv { background: var(--bg-dark2); transition: background .25s; position: relative; overflow: hidden; }
+[data-theme="dark"] #sv::before {
+  content: ''; position: absolute; top: -150px; right: -150px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,38,64,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.sv-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.sv-imgbox {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.1);
+  margin-bottom: 1.6rem;
+}
+.sv-imgbox img { width: 100%; height: 260px; object-fit: cover; }
+.sv-h { font-size: 1.7rem; font-weight: 900; color: #fff; margin-bottom: .9rem; line-height: 1.15; }
+.sv-p { font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 1rem; }
+.sv-list { list-style: none; }
+.sv-list li {
+  font-size: .86rem; color: rgba(255,255,255,.75);
+  padding: .4rem 0; display: flex; align-items: center; gap: .7rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.sv-list li:last-child { border: none; }
+.sv-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; transition: background .25s; }
+.dekra-box {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px; padding: 2rem;
+}
+.dekra-lbl { font-size: .72rem; color: rgba(255,255,255,.4); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .8rem; }
+.dekra-img { height: 40px; filter: brightness(10) saturate(0); margin-bottom: 1.2rem; }
+.dekra-h { font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: .7rem; }
+.dekra-p { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.65; margin-bottom: 1rem; }
+.btn-green {
+  display: block; text-align: center;
+  background: linear-gradient(135deg, #1e6e45, #2d9e64);
+  color: #fff; padding: .65rem 1.2rem; border-radius: 6px;
+  font-weight: 700; font-size: .84rem; margin-bottom: .5rem;
+  transition: opacity .2s, transform .15s;
+}
+.btn-green:hover { opacity: .85; transform: translateY(-1px); }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  KRITIS SPLIT                                       ║
+   ╚══════════════════════════════════════════════════════╝ */
+#kritis { padding: 0; }
+.kritis-wrap { display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; }
+.kritis-left {
+  background: var(--bg-base); padding: 90px 6%;
+  display: flex; flex-direction: column; justify-content: center;
+  transition: background .25s;
+}
+.kritis-right {
+  background: url('assets/images/kritis-2.png') center/cover no-repeat;
+  position: relative;
+}
+.kritis-right::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--bg-base) 0%, transparent 40%);
+  transition: background .25s;
+}
+[data-theme="dark"] .kritis-right::after {
+  background: linear-gradient(to right, var(--bg-alt) 0%, transparent 40%);
+}
+.k-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.3rem 1.5rem; margin-bottom: .9rem;
+  box-shadow: var(--sh-sm);
+  transition: background .25s, border-color .2s, box-shadow .2s;
+}
+.k-card:hover { border-color: rgba(26,38,64,0.25); box-shadow: var(--sh-md); }
+.k-icon { font-size: 1.3rem; margin-bottom: .5rem; }
+.k-t { font-weight: 700; font-size: .92rem; color: var(--tx-base); margin-bottom: .3rem; transition: color .25s; }
+.k-p { font-size: .82rem; color: var(--tx-muted); line-height: 1.55; transition: color .25s; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  TEAM                                               ║
+   ╚══════════════════════════════════════════════════════╝ */
+#team { background: var(--bg-dark); transition: background .25s; position: relative; overflow: hidden; }
+[data-theme="dark"] #team::before {
+  content: ''; position: absolute; bottom: -80px; left: -80px;
+  width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,38,64,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.team-g { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 900px; }
+.tm-card {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px; overflow: hidden;
+  transition: transform .25s, border-color .25s;
+}
+.tm-card:hover { transform: translateY(-5px); border-color: rgba(26,38,64,0.30); }
+.tm-photo { height: 300px; overflow: hidden; position: relative; }
+.tm-photo::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to top, var(--bg-dark) 0%, transparent 100%);
+  transition: background .25s;
+}
+.tm-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .4s; }
+.tm-card:hover .tm-photo img { transform: scale(1.04); }
+.tm-body { padding: 1.5rem; }
+.tm-name { font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: .2rem; }
+.tm-role { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: .7rem; }
+.tm-bio { font-size: .84rem; color: rgba(255,255,255,.65); line-height: 1.65; }
+.team-info {
+  max-width: 900px; margin-top: 2rem;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px; padding: 1.1rem 1.4rem;
+  font-size: .86rem; color: rgba(255,255,255,.55); line-height: 1.6;
+  display: flex; gap: .8rem;
+}
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  PARTNER                                            ║
+   ╚══════════════════════════════════════════════════════╝ */
+.partner-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 380px; }
+.partner-img {
+  background: url('assets/images/kritis-1.png') center/cover no-repeat;
+  position: relative;
+}
+.partner-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(232,236,245,.6);
+  transition: background .25s;
+}
+[data-theme="dark"] .partner-img::after { background: rgba(6,9,15,.65); }
+.partner-right {
+  background: var(--bg-base);
+  padding: 60px 6%; display: flex; flex-direction: column; justify-content: center;
+  transition: background .25s;
+}
+.partner-logos {
+  display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap;
+  margin-top: 1.5rem;
+  transition: filter .3s;
+}
+[data-theme="dark"] .partner-logos { filter: brightness(.85); }
+[data-theme="dark"] .partner-logos:hover { filter: brightness(1); }
+.partner-logos img { height: 46px; object-fit: contain; transition: transform .2s; }
+.partner-logos img:hover { transform: scale(1.07); }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  KONTAKT                                            ║
+   ╚══════════════════════════════════════════════════════╝ */
+#kontakt { text-align: center; position: relative; overflow: hidden; background: var(--bg-base); transition: background .25s; }
+[data-theme="dark"] #kontakt::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(26,38,64,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.kontakt-in { position: relative; z-index: 1; max-width: 660px; margin: 0 auto; }
+.kontakt-in .subtitle { margin: 0 auto 1.8rem; }
+.kontakt-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-bottom: 2.5rem; text-align: left; }
+.kontakt-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border: 1.5px solid var(--border); color: var(--tx-base);
+  background: var(--surface);
+  padding: .75rem 1.8rem; border-radius: 5px;
+  font-weight: 600; font-size: .9rem;
+  transition: background .2s, border-color .2s, transform .15s, color .25s;
+}
+.btn-outline:hover { border-color: var(--brand); background: var(--bg-alt); transform: translateY(-1px); }
+[data-theme="dark"] .btn-outline { color: #fff; border-color: rgba(255,255,255,.15); background: rgba(255,255,255,.04); }
+[data-theme="dark"] .btn-outline:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.09); }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  FAQ                                                ║
+   ╚══════════════════════════════════════════════════════╝ */
+#faq { background: var(--bg-alt); transition: background .25s; }
+.faq-wrap { max-width: 800px; }
+.faq-item { border-bottom: 1px solid var(--border); transition: border-color .25s; }
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  padding: 1.2rem 0;
+  display: flex; align-items: center; gap: .8rem;
+  font-size: .95rem; font-weight: 700; color: var(--tx-base);
+  text-align: left; transition: color .25s;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-ico {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(26,38,64,0.10);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; color: var(--accent);
+  transition: transform .3s, background .2s;
+}
+.faq-item.open .faq-ico { transform: rotate(45deg); background: rgba(26,38,64,0.20); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .25s;
+  font-size: .87rem; color: var(--tx-soft); line-height: 1.75;
+  padding-bottom: 0;
+  border-left: 2.5px solid rgba(26,38,64,0.40);
+  padding-left: 1rem; margin-left: .6rem;
+  transition: max-height .35s ease, padding .25s, color .25s, border-color .25s;
+}
+.faq-item.open .faq-a { max-height: 400px; padding-bottom: 1.2rem; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  FOOTER                                             ║
+   ╚══════════════════════════════════════════════════════╝ */
+footer {
+  background: var(--bg-dark2); padding: 2.5rem 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+  border-top: 1px solid rgba(255,255,255,.07);
+  transition: background .25s;
+}
+.f-logo img { height: 30px; filter: brightness(0) invert(1); opacity: .45; }
+.f-links { display: flex; gap: 1.5rem; list-style: none; }
+.f-links a { color: rgba(255,255,255,.35); font-size: .8rem; transition: color .2s; }
+.f-links a:hover { color: #fff; }
+.f-copy { color: rgba(255,255,255,.2); font-size: .75rem; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  REVEAL ANIMATION                                   ║
+   ╚══════════════════════════════════════════════════════╝ */
+.rev { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.rev.in { opacity: 1; transform: none; }
+.d1 { transition-delay: .1s; } .d2 { transition-delay: .18s; } .d3 { transition-delay: .26s; }
+
+/* ╔══════════════════════════════════════════════════════╗
+   ║  RESPONSIVE                                         ║
+   ╚══════════════════════════════════════════════════════╝ */
+@media (max-width: 1024px) {
+  .port-grid { grid-template-columns: 1fr 1fr; }
+  .sv-split  { grid-template-columns: 1fr; gap: 2rem; }
+  .kritis-wrap { grid-template-columns: 1fr; }
+  .kritis-right { min-height: 260px; }
+  .kritis-right::after { background: linear-gradient(to bottom, var(--bg-base) 0%, transparent 40%) !important; }
+  .partner-split { grid-template-columns: 1fr; }
+  .partner-img { min-height: 200px; }
+  .team-g { max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .burger { display: flex; }
+  .topbar { display: none; }
+
+  #hero { padding: 70px 5% 60px; }
+  .hero-name { font-size: clamp(1.7rem, 7vw, 2.8rem); }
+  .hero-logo { height: 66px; }
+  .hero-stats { gap: 2rem; }
+  .hero-contacts { gap: 1rem; }
+  .h-contact { min-width: 0; padding: 1rem 1.6rem; }
+
+  .port-grid, .g2, .g3, .sv-split, .kritis-wrap,
+  .partner-split, .team-g, .kontakt-cards { grid-template-columns: 1fr; }
+
+  .kritis-right { display: none; }
+  .kritis-left { padding: 60px 5%; }
+
+  .sec { padding: 64px 0; }
+  .title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+
+  footer { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-ghost { text-align: center; justify-content: center; }
+  .hero-stats { gap: 1.5rem; }
+  .kontakt-btns { flex-direction: column; }
+  .btn-outline, .btn-primary { text-align: center; justify-content: center; }
+  .partner-logos { gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/images/logo-dark.png" alt="SZP"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-text" style="display:none">SZ&amp;P</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Leistungen</a></li>
+      <li><a href="#kritis">KRITIS</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#partner">Partner</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#kontakt" class="nav-pill">Kontakt</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.7rem">
+      <button class="theme-btn" id="themeBtn" title="Dark/Light Mode umschalten" aria-label="Theme wechseln">
+      <span class="theme-btn-knob">
+        <!-- Moon -->
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <!-- Sun -->
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </span>
+    </button>
+      <button class="burger" id="burger" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div id="mob">
+  <a href="#portfolio">Leistungen</a>
+  <a href="#kritis">KRITIS</a>
+  <a href="#team">Team</a>
+  <a href="#partner">Partner</a>
+  <a href="#faq">FAQ</a>
+  <a href="#kontakt" class="mob-cta">Kontakt aufnehmen</a>
+</div>
+
+<!-- ══ TOPBAR ══ -->
+<div class="topbar">
+  <a href="mailto:info@scharschuh-zeissler-partner.de">✉ info@scharschuh-zeissler-partner.de</a>
+  <a href="tel:+4937123451629">📞 0371 / 23451629</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-contacts">
+    <div class="h-contact">
+      <div class="h-icon">✉</div>
+      <a href="mailto:info@scharschuh-zeissler-partner.de">info@scharschuh-zeissler-partner.de</a>
+    </div>
+    <div class="h-contact">
+      <div class="h-icon">📞</div>
+      <p>0371 / 23451629</p>
+    </div>
+  </div>
+
+  <img class="hero-logo" src="assets/images/logo-dark.png" alt="Dr. Scharschuh Zeißler & Partner">
+
+  <div class="hero-actions">
+    <a href="#kontakt" class="btn-primary">Jetzt Kontakt aufnehmen →</a>
+    <a href="#portfolio" class="btn-ghost">Leistungen entdecken</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-n">20+</div><div class="stat-l">Jahre Erfahrung</div></div>
+    <div class="stat-item"><div class="stat-n">6</div><div class="stat-l">Kernleistungen</div></div>
+    <div class="stat-item"><div class="stat-n">3</div><div class="stat-l">Zertifizierungen</div></div>
+  </div>
+  <div class="scroll-cue">Mehr erfahren</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PORTFOLIO ══ -->
+<section id="portfolio" class="sec">
+  <div class="wrap">
+    <div class="rev">
+      <div class="lbl">Portfolio</div>
+      <h2 class="title title-on-dark">Unser Portfolio</h2>
+      <p class="subtitle subtitle-on-dark">Umfassende Expertise im Bereich Sicherheitsmanagement</p>
+    </div>
+    <div class="port-grid rev">
+      <div class="port-card">
+        <div class="port-circle"><img src="assets/images/hero-bg.jpg" alt="Notfall- & Krisenmanagement"></div>
+        <div class="port-t">Notfall- &amp; Krisenmanagement</div>
+        <p class="port-p">Krisenstab, Pressearbeit, physische Resilienz und Krisenhandbücher – Sicherheit auf ganzer Linie durch strategische Planung.</p>
+      </div>
+      <div class="port-card">
+        <div class="port-circle"><img src="assets/images/kritis-1.png" alt="KRITIS-Schutz"></div>
+        <div class="port-t">KRITIS-Schutz</div>
+        <p class="port-p">Professionelle Sicherheitssysteme, individuell angepasst unter Berücksichtigung aller gesetzlichen Vorgaben und EU-Richtlinien.</p>
+      </div>
+      <div class="port-card">
+        <div class="port-circle"><img src="assets/images/krankenhaus.png" alt="KAEP Krankenhaus"></div>
+        <div class="port-t">Klinik-Alarm- &amp; Einsatzplanung (KAEP)</div>
+        <p class="port-p">Praxisorientierte Notfallplanung für Kliniken – von MANV bis IT-Ausfall, immer mit allen Sicherheitsaspekten versehen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ARBEITSSICHERHEIT ══ -->
+<section class="sec sec-light">
+  <div class="wrap">
+    <div class="rev">
+      <div class="lbl">Sicherheit</div>
+      <h2 class="title">Arbeitssicherheit &amp; Brandschutz</h2>
+      <p class="subtitle">Professioneller Schutz für Ihre Mitarbeiter und Ihr Unternehmen.</p>
+    </div>
+    <div class="g2 rev">
+      <div class="lcard"><div class="lcard-t">Externe Fachkraft für Arbeitssicherheit (SiFa)</div><p class="lcard-p">Umfassende Beratung und branchenübergreifende Betreuung nach ASiG und DGUV-Vorschriften.</p></div>
+      <div class="lcard"><div class="lcard-t">Brandschutzberatung</div><p class="lcard-p">Professionelle Brandschutzberatung und Übernahme der Funktion des Brandschutzbeauftragten.</p></div>
+      <div class="lcard"><div class="lcard-t">Risikoanalysen &amp; Gefährdungsbeurteilungen</div><p class="lcard-p">Systematische Risikoanalysen und Gefährdungsbeurteilungen für Ihren Betrieb.</p></div>
+      <div class="lcard"><div class="lcard-t">Aufbau betrieblicher Arbeitsschutz</div><p class="lcard-p">Strukturierter Aufbau und Organisation des betrieblichen Arbeitsschutzsystems.</p></div>
+      <div class="lcard"><div class="lcard-t">Betriebliches Gesundheitsmanagement</div><p class="lcard-p">Unterstützung und Integration des Betrieblichen Gesundheitsmanagements (BGM).</p></div>
+      <div class="lcard"><div class="lcard-t">Koordination &amp; Zusammenarbeit</div><p class="lcard-p">Koordination mit Arbeitsmedizinern und weiteren Fachstellen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SACHVERSTÄNDIGE ══ -->
+<section id="sv" class="sec">
+  <div class="wrap">
+    <div class="rev">
+      <div class="lbl" style="color:rgba(255,255,255,.5)">Expertise</div>
+      <h2 class="title title-on-dark">Sachverständigentätigkeit &amp; Schulungen</h2>
+    </div>
+    <div class="sv-split rev">
+      <div>
+        <div class="sv-imgbox">
+          <img src="https://scharschuh-zeissler-partner.de/wp-content/uploads/elementor/thumbs/iStock-1321364970-scaled-e1706014078871-qlatkptq7dasupmijhhz33sjijop98fzocnblpkrhc.jpg"
+               alt="Fachgutachten" onerror="this.parentElement.style.display='none'">
+        </div>
+        <div class="sv-h">Fachgutachten</div>
+        <p class="sv-p">Zertifizierte (DGuSV) Fach- und Gerichtsgutachten im Bereich Notfallmedizin &amp; Rettungsdienst sowie im Katastrophenschutz.</p>
+        <ul class="sv-list">
+          <li>Gutachten zur Einsatzqualität im Rettungsdienst</li>
+          <li>Bewertung notfallmedizinischer Versorgung</li>
+          <li>Analyse von Notfallabläufen in Kliniken</li>
+          <li>Prüfung von Notfallplänen</li>
+        </ul>
+      </div>
+      <div class="dekra-box">
+        <div class="dekra-lbl">Kooperationspartner von</div>
+        <img class="dekra-img" src="assets/images/dekra.png" alt="DEKRA">
+        <div class="dekra-h">Personenzertifizierung <span style="font-weight:400">(DEKRA)</span></div>
+        <p class="dekra-p">Qualifizierte Schulungen für Notfallmanager in KRITIS-Einrichtungen und Krankenhäusern in Zusammenarbeit mit der DEKRA.</p>
+        <ul class="sv-list" style="margin-bottom:1.5rem">
+          <li>Notfallmanager in KRITIS-Einrichtungen (DEKRA)</li>
+          <li>Notfallmanager im Krankenhaus (DEKRA)</li>
+        </ul>
+        <a href="https://www.dekra-akademie.de/produkte/notfallmanager-in-kritis-einrichtungen-dekra-weiterbildung" class="btn-green" target="_blank">Notfallmanager in KRITIS-Einrichtungen (DEKRA)</a>
+        <a href="https://www.dekra-akademie.de/weiterbildung/kritis-notfallmanager-ausbildung" class="btn-green" target="_blank">Notfallmanager im Krankenhaus (DEKRA)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KRITIS SPLIT ══ -->
+<section id="kritis" style="padding:0" class="rev">
+  <div class="kritis-wrap">
+    <div class="kritis-left">
+      <div class="lbl">Regulatorik</div>
+      <h2 class="title">KRITIS-Dachgesetz &amp; EU-Richtlinien</h2>
+      <p class="subtitle" style="margin-bottom:2rem">Verstehen Sie die Anforderungen und bleiben Sie compliant.</p>
+      <div class="k-card"><div class="k-icon">👥</div><div class="k-t">EU RCE-Directive (2022/2557)</div><p class="k-p">Regelt die Widerstandsfähigkeit kritischer Infrastrukturen. Umsetzung bis Oktober 2024 in nationales Recht verpflichtend.</p></div>
+      <div class="k-card"><div class="k-icon">🛡</div><div class="k-t">KRITIS-Dachgesetz *</div><p class="k-p">Nationale Umsetzung der EU-Vorgaben. Verpflichtet Betreiber aus elf KRITIS-Sektoren zur Erstellung von Resilienzplänen. (*noch nicht in Kraft getreten)</p></div>
+      <div class="k-card"><div class="k-icon">💻</div><div class="k-t">NIS2-Umsetzungsgesetz</div><p class="k-p">Deutlich erhöhte Sicherheitsanforderungen für Cybersicherheit und erweiterte Zahl betroffener Unternehmen.</p></div>
+    </div>
+    <div class="kritis-right"></div>
+  </div>
+</section>
+
+<!-- ══ KERNELEMENTE ══ -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="rev">
+      <div class="lbl">Resilienz</div>
+      <h2 class="title">Kernelemente des Resilienzmanagements</h2>
+      <p class="subtitle">Erfüllen Sie die gesetzlichen Anforderungen mit unserem systematischen Ansatz.</p>
+    </div>
+    <div class="g2 rev">
+      <div class="lcard"><div class="lcard-t">Risiko- &amp; Krisenmanagement</div><p class="lcard-p">Aufbau strukturierter Systeme zur Identifikation und Bewältigung von Risiken.</p></div>
+      <div class="lcard"><div class="lcard-t">Risikoanalysen</div><p class="lcard-p">Durchführung systematischer Analysen und Bewertungen aller relevanten Risiken.</p></div>
+      <div class="lcard"><div class="lcard-t">Resilienzpläne</div><p class="lcard-p">Erstellung umfassender Pläne gemäß gesetzlicher Vorgaben und EU-Standards.</p></div>
+      <div class="lcard"><div class="lcard-t">Maßnahmenumsetzung</div><p class="lcard-p">Technische, personelle und organisatorische Schutzmaßnahmen implementieren.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM ══ -->
+<section id="team" class="sec">
+  <div class="wrap">
+    <div class="rev">
+      <div class="lbl" style="color:rgba(255,255,255,.5)">Über uns</div>
+      <h2 class="title title-on-dark">Das Team</h2>
+      <p class="subtitle subtitle-on-dark">Expertise und Erfahrung für Ihre Sicherheit.</p>
+    </div>
+    <div class="team-g rev">
+      <div class="tm-card">
+        <div class="tm-photo">
+          <img src="https://scharschuh-zeissler-partner.de/wp-content/uploads/2024/01/392c500e-b246-4b71-a9c0-106cbfe014e9-799x1024.jpg" alt="Dr. Tom Scharschuh">
+        </div>
+        <div class="tm-body">
+          <div class="tm-name">Dr. Tom Scharschuh</div>
+          <div class="tm-role">Gründer &amp; Managing Partner</div>
+          <p class="tm-bio">Mehr als 20 Jahre Erfahrung im internationalen Prozess-, Programm- und Projektmanagement. Stabsoffizier der Bundeswehr, Experte für Notfall- &amp; Krisenmanagement.</p>
+        </div>
+      </div>
+      <div class="tm-card">
+        <div class="tm-photo">
+          <img src="assets/images/zeissler.jpg" alt="Lucas Zeißler">
+        </div>
+        <div class="tm-body">
+          <div class="tm-name">Lucas Zeißler</div>
+          <div class="tm-role">Gründer &amp; Managing Partner</div>
+          <p class="tm-bio">Spezialist für KRITIS, KAEP und Notfall- &amp; Krisenmanagement. Fachkraft für Arbeitssicherheit, zertifizierter Gutachter, DAKPE-Mitglied und HSE-Experte.</p>
+        </div>
+      </div>
+    </div>
+    <div class="team-info rev">
+      <span>ℹ</span>
+      <span>Neben unseren Gründungspartnern verfügen wir über ein erfahrenes Team aus Backoffice-Mitarbeitern sowie weiteren Partnern in den Bereichen Consulting, Management und Administration.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARTNER ══ -->
+<div class="partner-split rev">
+  <div class="partner-img"></div>
+  <div class="partner-right">
+    <div id="partner">
+      <div class="lbl">Kooperationen</div>
+      <h2 class="title">Unsere Partnerschaften</h2>
+      <p class="subtitle">Zertifizierte Qualität durch starke Kooperationen mit führenden Institutionen.</p>
+      <div class="partner-logos">
+        <img src="https://scharschuh-zeissler-partner.de/wp-content/uploads/2024/05/Bildschirmfoto-2024-05-04-um-21.27.10-e1714851014821.png" alt="DAKEP" style="height:42px">
+        <img src="assets/images/dekra.png" alt="DEKRA" style="height:38px">
+        <img src="https://scharschuh-zeissler-partner.de/wp-content/uploads/2024/05/gepr-sv-siegel.png" alt="DGuSV" style="height:48px">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ KONTAKT ══ -->
+<section id="kontakt" class="sec sec-light">
+  <div class="wrap">
+    <div class="kontakt-in rev">
+      <div class="lbl" style="justify-content:center">Kontakt</div>
+      <h2 class="title">Kontaktieren Sie uns!</h2>
+      <p class="subtitle">Lassen Sie uns gemeinsam Ihre Sicherheit und Resilienz stärken.</p>
+    </div>
+    <div class="kontakt-cards rev">
+      <div class="lcard"><div class="lcard-t">Persönliche Beratung</div><p class="lcard-p">Termin vereinbaren für ein individuelles Gespräch – wir analysieren Ihre Anforderungen und entwickeln maßgeschneiderte Lösungen.</p></div>
+      <div class="lcard"><div class="lcard-t">Schnelle Kontaktaufnahme</div><p class="lcard-p">Per E-Mail, Telefon oder Kontaktformular – wir melden uns zeitnah bei Ihnen zurück.</p></div>
+      <div class="lcard"><div class="lcard-t">Vor-Ort-Termine</div><p class="lcard-p">Wir besuchen Sie in Ihrem Unternehmen, um Ihre Infrastruktur kennenzulernen und Handlungsempfehlungen zu erarbeiten.</p></div>
+    </div>
+    <div class="kontakt-btns rev">
+      <a href="mailto:info@scharschuh-zeissler-partner.de" class="btn-primary">✉ info@scharschuh-zeissler-partner.de</a>
+      <a href="tel:+4937123451629" class="btn-outline">📞 0371 / 23451629</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq" class="sec">
+  <div class="wrap">
+    <div class="rev">
+      <div class="lbl">FAQ</div>
+      <h2 class="title">Häufig gestellte Fragen</h2>
+    </div>
+    <div class="faq-wrap rev">
+      <div class="faq-item"><button class="faq-q"><span class="faq-ico">+</span>Was bedeutet KRITIS-Schutz?</button><div class="faq-a">KRITIS-Schutz sichert Verfügbarkeit und Integrität kritischer Infrastrukturen. Er umfasst technische und IT-Sicherheit, Objektschutz sowie organisatorische Prävention.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-ico">+</span>Warum sind zertifizierte KRITIS-Schulungen notwendig?</button><div class="faq-a">Qualifiziertes Personal ist essenziell, um im Ernstfall schnell und rechtssicher zu handeln. Fehlende Kompetenz kann zu Schäden, Bußgeldern und Reputationsverlust führen.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-ico">+</span>Was ist Business Continuity Management?</button><div class="faq-a">BCMS ist ein integraler Bestandteil des betrieblichen Resilienzmanagements. Es kann stufenweise implementiert und mit anderen Managementsystemen synchronisiert werden.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-ico">+</span>Was beinhaltet die Klinik-Alarm- &amp; Einsatzplanung (KAEP)?</button><div class="faq-a">KAEP umfasst Alarm- und Einsatzpläne für Kliniken – inklusive Kommunikationsstrukturen, Evakuierungskonzepten und Koordination mit externen Kräften bei Großschadensereignissen.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-ico">+</span>Welche rechtlichen Anforderungen gelten für Resilienzpläne?</button><div class="faq-a">Die Anforderungen ergeben sich aus BSI-Gesetz, IT-Sicherheitsgesetz und branchenspezifischen KRITIS-Vorgaben. Wir unterstützen bei Einhaltung und Zertifizierung nach relevanten Standards.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-ico">+</span>Brauche ich Arbeitssicherheit und Brandschutz?</button><div class="faq-a">Ja – das ASiG verpflichtet Unternehmen zur Bestellung einer Fachkraft für Arbeitssicherheit. Nicht-Einhaltung kann zu Bußgeldern, Haftungsrisiken und Versicherungsproblemen führen.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-ico">+</span>Wo bekomme ich ein Gutachten im Bereich Notfallmedizin?</button><div class="faq-a">Dr. Scharschuh, Zeißler &amp; Partner bietet DGuSV-zertifizierte Gutachten für Gerichte, Versicherungen und Organisationen an. Kontaktieren Sie uns für Ihren spezifischen Fall.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="f-logo"><img src="assets/images/logo-dark.png" alt="SZP"></div>
+  <ul class="f-links">
+    <li><a href="https://scharschuh-zeissler-partner.de/impressum/" target="_blank">Impressum</a></li>
+    <li><a href="https://scharschuh-zeissler-partner.de/ueber-uns/" target="_blank">Über uns</a></li>
+    <li><a href="mailto:info@scharschuh-zeissler-partner.de">Kontakt</a></li>
+  </ul>
+  <div class="f-copy">© 2024 Dr. Scharschuh, Zeißler &amp; Partner</div>
+</footer>
+
+<script>
+/* ── THEME TOGGLE ── */
+const html = document.documentElement;
+const btn  = document.getElementById('themeBtn');
+
+function applyTheme(t) {
+  html.setAttribute('data-theme', t);
+  try { localStorage.setItem('szp-theme', t); } catch(e) {}
+}
+
+// Load saved or system preference
+(function() {
+  let saved;
+  try { saved = localStorage.getItem('szp-theme'); } catch(e) {}
+  if (saved) { applyTheme(saved); return; }
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(prefersDark ? 'dark' : 'light');
+})();
+
+btn.addEventListener('click', () => {
+  applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+/* ── BURGER ── */
+const burger = document.getElementById('burger');
+const mob    = document.getElementById('mob');
+burger.addEventListener('click', () => {
+  const open = mob.classList.toggle('on');
+  burger.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mob.classList.remove('on');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}));
+
+/* ── FAQ ── */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const was  = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!was) item.classList.add('open');
+  });
+});
+
+/* ── SCROLL REVEAL ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+/* ── NAV OPACITY ON SCROLL ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.backdropFilter = window.scrollY > 50 ? 'blur(20px) saturate(1.6)' : 'blur(18px) saturate(1.4)';
+}, { passive: true });
+</script>
+</body>
+</html>
