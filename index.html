@@ -102,7 +102,7 @@ a { text-decoration: none; }
 /* ─── HERO ───────────────────────────────────── */
 #hero {
   margin-top: 66px;
-  background: var(--bg-hero);
+  background: var(--white);
   min-height: calc(100svh - 66px);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
@@ -117,7 +117,7 @@ a { text-decoration: none; }
 }
 
 .hero-logo {
-  height: 160px; margin: 0 auto 2.8rem;
+  height: 220px; margin: 0 auto 3rem;
   position: relative; z-index: 1;
 }
 
@@ -275,7 +275,7 @@ a { text-decoration: none; }
 
 .dekra-box { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 2rem; }
 .dekra-lbl { font-size: .7rem; color: rgba(255,255,255,.4); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .8rem; }
-.dekra-img { height: 38px; margin-bottom: 1.2rem; background: #fff; padding: 5px 10px; border-radius: 6px; }
+.dekra-img { height: 52px; margin-bottom: 1.4rem; background: #fff; padding: 7px 14px; border-radius: 8px; }
 .dekra-h { font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: .7rem; }
 .dekra-p { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.65; margin-bottom: 1rem; }
 .btn-green {
@@ -405,7 +405,7 @@ footer {
   .nav-links { display: none; }
   .burger { display: flex; }
   #hero { padding: 50px 5% 50px; }
-  .hero-logo { height: 110px; margin-bottom: 2rem; }
+  .hero-logo { height: 150px; margin-bottom: 2rem; }
   .hero-stats { gap: 2rem; }
   .h-contact { padding: .65rem 1.2rem; font-size: .83rem; }
   .g2, .g3, .team-g, .kontakt-cards { grid-template-columns: 1fr; }
@@ -464,11 +464,6 @@ footer {
 
   <img class="hero-logo" src="assets/images/logo-dark.png" alt="Dr. Scharschuh Zeißler & Partner">
 
-  <div class="hero-actions">
-    <a href="#kontakt" class="btn-primary">Jetzt Kontakt aufnehmen →</a>
-    <a href="#portfolio" class="btn-ghost">Leistungen entdecken</a>
-  </div>
-
   <div class="hero-contacts">
     <a href="mailto:info@scharschuh-zeissler-partner.de" class="h-contact">
       <div class="h-icon">
@@ -503,12 +498,12 @@ footer {
     </div>
     <div class="g3 rev">
       <div class="port-card">
-        <div class="port-circle"><img src="assets/images/hero-bg.jpg" alt="Notfall"></div>
+        <div class="port-circle"><img src="assets/images/krankenhaus.png" alt="Notfall"></div>
         <div class="port-t">Notfall- &amp; Krisenmanagement</div>
         <p class="port-p">Krisenstab, Pressearbeit, physische Resilienz und Krisenhandbücher – Sicherheit auf ganzer Linie durch strategische Planung.</p>
       </div>
       <div class="port-card">
-        <div class="port-circle"><img src="assets/images/kritis-1.png" alt="KRITIS"></div>
+        <div class="port-circle"><img src="assets/images/hero-bg.jpg" alt="KRITIS"></div>
         <div class="port-t">KRITIS-Schutz</div>
         <p class="port-p">Professionelle Sicherheitssysteme, individuell angepasst unter Berücksichtigung aller gesetzlichen Vorgaben und EU-Richtlinien.</p>
       </div>
@@ -563,7 +558,6 @@ footer {
         </ul>
       </div>
       <div class="dekra-box">
-        <div class="dekra-lbl">Kooperationspartner von</div>
         <img class="dekra-img" src="assets/images/dekra.png" alt="DEKRA">
         <div class="dekra-h">Personenzertifizierung <span style="font-weight:400">(DEKRA)</span></div>
         <p class="dekra-p">Qualifizierte Schulungen für Notfallmanager in KRITIS-Einrichtungen und Krankenhäusern in Zusammenarbeit mit der DEKRA.</p>
@@ -572,7 +566,7 @@ footer {
           <li>Notfallmanager im Krankenhaus (DEKRA)</li>
         </ul>
         <a href="https://www.dekra-akademie.de/produkte/notfallmanager-in-kritis-einrichtungen-dekra-weiterbildung" class="btn-green" target="_blank">Notfallmanager in KRITIS-Einrichtungen (DEKRA)</a>
-        <a href="https://www.dekra-akademie.de/weiterbildung/kritis-notfallmanager-ausbildung" class="btn-green" target="_blank">Notfallmanager im Krankenhaus (DEKRA)</a>
+        <a href="https://www.dekra-akademie.de/produkte/notfallmanager-im-krankenhaus-dekra-weiterbildung" class="btn-green" target="_blank">Notfallmanager im Krankenhaus (DEKRA)</a>
       </div>
     </div>
   </div>
@@ -586,7 +580,7 @@ footer {
       <h2 class="h2">KRITIS-Dachgesetz &amp; EU-Richtlinien</h2>
       <p class="sub" style="margin-bottom:2rem">Verstehen Sie die Anforderungen und bleiben Sie compliant.</p>
       <div class="k-card"><div class="k-icon">👥</div><div class="k-t">EU RCE-Directive (2022/2557)</div><p class="k-p">Regelt die Widerstandsfähigkeit kritischer Infrastrukturen. Umsetzung bis Oktober 2024 in nationales Recht verpflichtend.</p></div>
-      <div class="k-card"><div class="k-icon">🛡</div><div class="k-t">KRITIS-Dachgesetz *</div><p class="k-p">Nationale Umsetzung der EU-Vorgaben. Verpflichtet Betreiber aus elf KRITIS-Sektoren zur Erstellung von Resilienzplänen. (*noch nicht in Kraft getreten)</p></div>
+      <div class="k-card"><div class="k-icon">🛡</div><div class="k-t">KRITIS-Dachgesetz</div><p class="k-p">Nationale Umsetzung der EU-Vorgaben. Verpflichtet Betreiber aus elf KRITIS-Sektoren zur Erstellung von Resilienzplänen.</p></div>
       <div class="k-card"><div class="k-icon">💻</div><div class="k-t">NIS2-Umsetzungsgesetz</div><p class="k-p">Deutlich erhöhte Sicherheitsanforderungen für Cybersicherheit und erweiterte Zahl betroffener Unternehmen.</p></div>
     </div>
     <div class="kritis-right"></div>
