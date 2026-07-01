@@ -1,0 +1,35 @@
+{
+  "version": "0.2",
+  "language": "en,de",
+  "dictionaries": ["de_DE"],
+  "ignorePaths": [],
+  "ignoreWords": [
+    "Scharschuh", "Zeißler", "zeissler", "KRITIS", "kritis",
+    "KAEP", "DEKRA", "dekra", "topbar", "TOPBAR", "SACHVERSTÄNDIGE",
+    "KONTAKT", "kontakt", "Notfall", "Krisenmanagement", "Resilienz",
+    "Krisenstab", "Pressearbeit", "Krisenhandbücher", "Sicherheit",
+    "Sicherheitsmanagement", "Sicherheitssysteme", "Schutzmaßnahmen",
+    "Notfallplanung", "Einsatzplanung", "Gefährdungsbeurteilungen",
+    "Arbeitssicherheit", "Brandschutz", "Arbeitsschutz", "MANV",
+    "NIS2", "DGuSV", "DAKPE", "HSE", "SiFa", "ASiG", "DGUV",
+    "Sachverständige", "Sachverständigentätigkeit", "Gutachten",
+    "Personenzertifizierung", "aufnehmen", "Lösungen", "Umfassende",
+    "umfassende", "Ihnen", "Bereich", "Vorgaben", "Richtlinien",
+    "Berücksichtigung", "Anforderungen", "Infrastruktur", "kritischen",
+    "Individuell", "angepasst", "gesetzlichen", "Praxisorientierte",
+    "Notfallmanager", "Einsatzplanung", "Klinik", "Ausfall",
+    "KRITIS-Dachgesetz", "Resilienzmanagement", "Resilienzpläne"
+  ],
+  "patterns": [
+    {
+      "name": "css-classes",
+      "pattern": "/\\.[a-z][a-z0-9-]*/g"
+    }
+  ],
+  "overrides": [
+    {
+      "filename": "**/*.html",
+      "language": "de"
+    }
+  ]
+}
