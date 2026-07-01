@@ -275,17 +275,18 @@ a { text-decoration: none; }
 
 .dekra-box { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 2rem; }
 .dekra-lbl { font-size: .7rem; color: rgba(255,255,255,.4); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .8rem; }
-.dekra-img { height: 38px; filter: brightness(10) saturate(0); margin-bottom: 1.2rem; }
+.dekra-img { height: 38px; margin-bottom: 1.2rem; background: #fff; padding: 5px 10px; border-radius: 6px; }
 .dekra-h { font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: .7rem; }
 .dekra-p { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.65; margin-bottom: 1rem; }
 .btn-green {
   display: block; text-align: center;
-  background: linear-gradient(135deg, #1a6644, #259160);
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25);
   color: #fff; padding: .65rem 1.2rem; border-radius: 6px;
   font-weight: 700; font-size: .84rem; font-family: inherit;
-  margin-bottom: .5rem; transition: opacity .2s, transform .15s;
+  margin-bottom: .5rem; transition: background .2s, transform .15s;
 }
-.btn-green:hover { opacity: .85; transform: translateY(-1px); }
+.btn-green:hover { background: rgba(255,255,255,.22); transform: translateY(-1px); }
 
 /* ─── KRITIS SPLIT ───────────────────────────── */
 .kritis-wrap { display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; }
