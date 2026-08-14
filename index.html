@@ -6,7 +6,9 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1"
     />
-    <title>Dr. Scharschuh, Zeißler & Partner – Management & Consulting</title>
+    <title>Dr. Scharschuh, Zeißler & Partner – KRITIS-Schutz, Kliniknotfallmanagement & Sachverständige</title>
+    <meta name="description" content="Experten für KRITIS-Schutz, Kliniknotfallmanagement, Krankenhaus-Alarm- und Einsatzplanung (KAEP) und Sicherheitsmanagement. DGuSV-zertifizierte Fachgutachten und Sachverständige für Krankenhäuser und kritische Infrastrukturen." />
+    <meta name="keywords" content="KRITIS-Schutz, Kliniknotfallmanagement, KAEP, Krankenhaus-Alarm- und Einsatzplanung, Sachverständiger KRITIS, Sachverständiger Kliniknotfallmanagement, Fachgutachten, Gutachten kritische Infrastruktur, DGuSV Sachverständiger, Notfallmanagement Krankenhaus, Sicherheitsmanagement" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -685,6 +687,34 @@
         background: rgba(255, 255, 255, 0.22);
         transform: translateY(-1px);
       }
+
+      /* ─── DGUSV BANNER ──────────────────────────── */
+      .dgusv-banner {
+        margin-top: 56px;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 10px;
+        padding: 36px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .dgusv-banner__btn {
+        flex-shrink: 0;
+        display: inline-block;
+        background: #fff;
+        color: #1a2640;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 14px 28px;
+        border-radius: 6px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .dgusv-banner__btn:hover { background: #e8ecf4; transform: translateY(-2px); }
 
       /* ─── KRITIS SPLIT ───────────────────────────── */
       .kritis-wrap {
@@ -1387,6 +1417,21 @@
             >
           </div>
         </div>
+
+        <!-- DGuSV Profil Banner -->
+        <div class="dgusv-banner rev">
+          <div class="dgusv-banner__left">
+            <div class="lbl lbl-light" style="margin-bottom: 12px;">DGuSV-Sachverständigenprofil</div>
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 10px;">Lucas Zeißler – Geprüfter Sachverständiger</h3>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.7; max-width: 560px;">
+              DGuSV-zertifizierter Sachverständiger für <strong style="color:#fff;">KRITIS-Schutz</strong>, <strong style="color:#fff;">Kliniknotfallmanagement (KAEP)</strong> und <strong style="color:#fff;">Sicherheitsmanagement</strong>. Unabhängige Fachgutachten und sachverständige Stellungnahmen für Gerichte, Versicherungen, Kliniken und Unternehmen.
+            </p>
+          </div>
+          <a href="https://lucas-zeissler.dgusv.de/" target="_blank" rel="noopener" class="dgusv-banner__btn">
+            Sachverständigenprofil ansehen →
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -1692,6 +1737,46 @@
               Dr. Scharschuh, Zeißler &amp; Partner bietet DGuSV-zertifizierte
               Gutachten für Gerichte, Versicherungen und Organisationen.
               Kontaktieren Sie uns für Ihren spezifischen Fall.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Was macht ein Sachverständiger für KRITIS-Schutz?
+            </button>
+            <div class="faq-a">
+              Ein Sachverständiger für KRITIS-Schutz bewertet unabhängig, ob Schutzkonzepte, Notfallpläne und Sicherheitsstrukturen kritischer Infrastrukturen den gesetzlichen und fachlichen Anforderungen entsprechen. Er erstellt Fachgutachten für Behörden, Gerichte, Versicherungen und Betreiber – z. B. zu Resilienzplänen nach KRITIS-Dachgesetz oder EU RCE-Richtlinie.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Was ist ein Sachverständiger für Kliniknotfallmanagement?
+            </button>
+            <div class="faq-a">
+              Ein Sachverständiger für Kliniknotfallmanagement prüft und bewertet Notfallstrukturen, Alarm- und Einsatzpläne sowie Krisenreaktionsfähigkeiten in Krankenhäusern und medizinischen Einrichtungen. Grundlage sind u. a. die DIN EN 15614, das BBK-Handbuch KAEP sowie spezifische Landesgesetze. Das Gutachten kann für behördliche Zulassungen, Qualitätssicherung oder gerichtliche Verfahren benötigt werden.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Was ist Krankenhaus-Alarm- und Einsatzplanung (KAEP) und wann brauche ich ein Gutachten?
+            </button>
+            <div class="faq-a">
+              Die Krankenhaus-Alarm- und Einsatzplanung (KAEP) umfasst alle Maßnahmen, die ein Krankenhaus auf interne und externe Großschadensereignisse vorbereiten – von der Stabsstruktur über Evakuierungspläne bis zur Koordination mit Rettungsdienst und Behörden. Ein Fachgutachten zur KAEP wird benötigt, wenn Pläne behördlich geprüft, nach Schadensereignissen analysiert oder im Rahmen von Zertifizierungen bewertet werden sollen.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Wie läuft eine Sachverständigenbeurteilung ab?
+            </button>
+            <div class="faq-a">
+              Nach Auftragserteilung erfolgt zunächst eine Dokumentenanalyse bestehender Pläne und Konzepte. Im nächsten Schritt findet – sofern erforderlich – eine Vor-Ort-Begehung statt. Anschließend erstellt der Sachverständige ein schriftliches Gutachten mit Befund, Bewertung und Empfehlungen. Bei Bedarf kann eine ergänzende mündliche Erläuterung vor Gericht oder Behörden erfolgen.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Welche Fachgebiete deckt der DGuSV-Sachverständige Lucas Zeißler ab?
+            </button>
+            <div class="faq-a">
+              Lucas Zeißler ist DGuSV-zertifizierter Sachverständiger für KRITIS-Schutz und Kliniknotfallmanagement (KAEP) sowie Arbeitssicherheits- und Sicherheitsmanagement. Er erstellt unabhängige Fachgutachten und sachverständige Stellungnahmen für Gerichte, Versicherungen, Kliniken und Unternehmen. Sein vollständiges Profil ist unter <a href="https://lucas-zeissler.dgusv.de/" target="_blank" rel="noopener">lucas-zeissler.dgusv.de</a> abrufbar.
             </div>
           </div>
         </div>
