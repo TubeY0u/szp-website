@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anleitung – Website live schalten</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f7fa; color: #1a2640; line-height: 1.7; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px; }
+  h1 { font-size: 1.7rem; font-weight: 800; margin-bottom: 6px; }
+  .sub { color: #4a5568; margin-bottom: 40px; }
+  .option { background: #fff; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(26,38,64,.08); }
+  .badge { display: inline-block; font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 14px; letter-spacing: .04em; text-transform: uppercase; }
+  .badge-easy { background: #d1fae5; color: #065f46; }
+  .badge-medium { background: #fef3c7; color: #92400e; }
+  .option h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+  .option p { color: #4a5568; font-size: .95rem; margin-bottom: 14px; }
+  ol, ul { padding-left: 1.3rem; color: #4a5568; font-size: .95rem; }
+  li { margin-bottom: 6px; }
+  .code { background: #1a2640; color: #a5f3fc; font-family: monospace; font-size: .88rem; padding: 12px 16px; border-radius: 8px; margin: 12px 0; }
+  .note { background: #eff6ff; border-left: 3px solid #3b82f6; padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: .88rem; color: #1e40af; margin-top: 14px; }
+  .edit-section { background: #1a2640; color: #fff; border-radius: 14px; padding: 28px 32px; margin-top: 32px; }
+  .edit-section h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: #fff; }
+  .edit-section p, .edit-section li { color: rgba(255,255,255,.75); font-size: .95rem; }
+  .edit-section ol { padding-left: 1.3rem; }
+  .tag { font-family: monospace; background: rgba(255,255,255,.12); padding: 2px 7px; border-radius: 4px; font-size: .85rem; color: #a5f3fc; }
+  hr { border: none; border-top: 1px solid #e2e8f0; margin: 32px 0; }
+  .footer { text-align: center; color: #718096; font-size: .85rem; margin-top: 40px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Website live schalten</h1>
+  <p class="sub">Anleitung für Dr. Scharschuh, Zeißler &amp; Partner – erstellt von Voidcrafts</p>
+
+  <!-- OPTION 1 -->
+  <div class="option">
+    <span class="badge badge-easy">★ Empfohlen – Einfachste Methode</span>
+    <h2>Option 1: Hochladen über das Hosting-Portal (cPanel / IONOS / Strato)</h2>
+    <p>Die meisten Hosting-Anbieter haben einen Datei-Manager direkt im Browser – kein extra Programm nötig.</p>
+    <ol>
+      <li>Im Kundenbereich deines Hosters einloggen (z.B. IONOS, Strato, all-inkl)</li>
+      <li>„Webspace" oder „Datei-Manager" öffnen</li>
+      <li>In den Ordner <strong>public_html</strong> (oder <strong>www</strong> / <strong>htdocs</strong>) navigieren</li>
+      <li>Alle alten WordPress-Dateien löschen (wp-admin, wp-content, wp-includes, .php-Dateien)</li>
+      <li>Die Datei <strong>index.html</strong> und den Ordner <strong>assets</strong> aus diesem Paket hochladen</li>
+      <li>Fertig – die Seite ist live.</li>
+    </ol>
+    <div class="note">&#x2139; Falls du nicht weißt, welcher Anbieter dein Hosting bereitstellt: Im E-Mail-Postfach nach „Webhosting", „Bestellbestätigung" oder dem Anbieternamen suchen.</div>
+  </div>
+
+  <!-- OPTION 2 -->
+  <div class="option">
+    <span class="badge badge-easy">Einfach – Kein eigenes Hosting nötig</span>
+    <h2>Option 2: Netlify Drop (kostenlos, in 2 Minuten live)</h2>
+    <p>Netlify ist ein kostenloser Hosting-Dienst. Deine eigene Domain kann danach einfach umgeleitet werden.</p>
+    <ol>
+      <li>Browser öffnen und <strong>app.netlify.com/drop</strong> aufrufen</li>
+      <li>Den gesamten Website-Ordner (<em>diesen Ordner hier</em>) per Drag &amp; Drop ins Browserfenster ziehen</li>
+      <li>Netlify gibt sofort eine temporäre URL aus (z.B. <em>random-name.netlify.app</em>)</li>
+      <li>Kostenlosen Account erstellen → unter „Domain settings" die eigene Domain <strong>scharschuh-zeissler-partner.de</strong> eintragen</li>
+      <li>Beim Domain-Anbieter den DNS-Eintrag auf Netlify umstellen (Netlify zeigt genau welche Werte einzutragen sind)</li>
+    </ol>
+    <div class="note">&#x2139; Die temporäre URL funktioniert sofort. Die eigene Domain braucht nach der Umstellung ca. 1–24 Stunden bis sie aktiv ist (DNS-Propagierung).</div>
+  </div>
+
+  <!-- OPTION 3 -->
+  <div class="option">
+    <span class="badge badge-medium">Etwas technischer – per FTP</span>
+    <h2>Option 3: FileZilla (FTP-Programm)</h2>
+    <p>Für alle, die Zugang zu den FTP-Daten ihres Hosters haben.</p>
+    <ol>
+      <li><strong>FileZilla</strong> kostenlos herunterladen: <em>filezilla-project.org</em></li>
+      <li>FTP-Zugangsdaten aus dem Hosting-Portal kopieren (Host, Benutzername, Passwort, Port)</li>
+      <li>In FileZilla verbinden</li>
+      <li>Rechts (Server) in den Ordner <strong>public_html</strong> navigieren, alte Dateien löschen</li>
+      <li>Links (Computer) diesen Ordner öffnen → <strong>index.html</strong> und <strong>assets/</strong> nach rechts ziehen</li>
+      <li>Warten bis Upload abgeschlossen → fertig.</li>
+    </ol>
+  </div>
+
+  <hr>
+
+  <!-- ÄNDERUNGEN SELBST VORNEHMEN -->
+  <div class="edit-section">
+    <h2>Texte selbst ändern</h2>
+    <p style="margin-bottom:16px">Die gesamte Website steckt in einer einzigen Datei: <span class="tag">index.html</span>. Du kannst sie mit einem Text-Editor öffnen und bearbeiten.</p>
+    <ol>
+      <li>Datei <span class="tag">index.html</span> mit einem Editor öffnen<br>
+        <span style="font-size:.85rem;opacity:.7">Empfehlung: <strong>Notepad++</strong> (kostenlos) oder einfach der Windows-Editor</span></li>
+      <li>Mit <span class="tag">Strg + F</span> den Text suchen, den du ändern möchtest</li>
+      <li>Text ersetzen, speichern</li>
+      <li>Geänderte <span class="tag">index.html</span> erneut hochladen (Option 1, 2 oder 3)</li>
+    </ol>
+    <p style="margin-top:16px;font-size:.88rem;opacity:.7">Für größere Änderungen (neue Abschnitte, Bilder, Layout) meld dich gerne bei Voidcrafts.</p>
+  </div>
+
+  <div class="footer">
+    Erstellt von Voidcrafts &nbsp;·&nbsp; <a href="https://voidcrafts.de" style="color:#718096">voidcrafts.de</a> &nbsp;·&nbsp; <a href="mailto:contact@voidcrafts.de" style="color:#718096">contact@voidcrafts.de</a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datenschutz — Dr. Scharschuh, Zeißler &amp; Partner</title>
+    <meta name="robots" content="noindex, follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+        background: #f5f7fa;
+        color: #1a2640;
+        line-height: 1.7;
+      }
+
+      /* ── NAV ── */
+      .top-nav {
+        background: #1a2640;
+        padding: 20px 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-logo {
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: #fff;
+        text-decoration: none;
+      }
+      .nav-logo span {
+        color: #93c5fd;
+      }
+      .nav-back {
+        color: rgba(255, 255, 255, 0.55);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+      }
+      .nav-back:hover {
+        color: #fff;
+      }
+
+      /* ── CONTENT ── */
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 72px 48px 120px;
+      }
+      .page-tag {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #1a2640;
+        background: #dde3ed;
+        padding: 4px 10px;
+        border-radius: 2px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-size: 52px;
+        font-weight: 800;
+        color: #111c30;
+        line-height: 1.05;
+        margin-bottom: 12px;
+      }
+      .intro {
+        font-size: 15px;
+        color: #4a5568;
+        margin-bottom: 48px;
+        max-width: 600px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #dde3ed;
+        padding: 32px 36px;
+        margin-bottom: 24px;
+      }
+      h2 {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #1a2640;
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #1a2640;
+        display: inline-block;
+      }
+      p,
+      address {
+        font-size: 15px;
+        color: #4a5568;
+        font-style: normal;
+        line-height: 1.8;
+        margin-bottom: 12px;
+      }
+      p:last-child,
+      address:last-child {
+        margin-bottom: 0;
+      }
+      ul {
+        font-size: 15px;
+        color: #4a5568;
+        padding-left: 20px;
+        margin-bottom: 12px;
+        line-height: 1.8;
+      }
+      li {
+        margin-bottom: 4px;
+      }
+      a {
+        color: #1a2640;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px solid #dde3ed;
+      }
+      a:hover {
+        border-color: #1a2640;
+      }
+      strong {
+        font-weight: 600;
+        color: #1a2640;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: #111c30;
+        padding: 28px 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .f-logo {
+        font-size: 13px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: 0.5px;
+      }
+      .f-links {
+        display: flex;
+        gap: 24px;
+      }
+      .f-links a {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.45);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+      }
+      .f-links a:hover {
+        color: #fff;
+        border: none;
+      }
+      .f-copy {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.25);
+      }
+
+      @media (max-width: 700px) {
+        .top-nav {
+          padding: 16px 20px;
+        }
+        .wrap {
+          padding: 40px 20px 80px;
+        }
+        h1 {
+          font-size: 36px;
+        }
+        .card {
+          padding: 24px 20px;
+        }
+        footer {
+          flex-direction: column;
+          padding: 24px 20px;
+          text-align: center;
+        }
+        .f-links {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-logo"
+        >Dr. Scharschuh, <span>Zeißler &amp; Partner</span></a
+      >
+      <a href="index.html" class="nav-back">← Startseite</a>
+    </nav>
+
+    <div class="wrap">
+      <span class="page-tag">Rechtliches</span>
+      <h1>Datenschutz</h1>
+      <p class="intro">
+        Diese Datenschutzerklärung informiert Sie darüber, wie und warum wir
+        personenbezogene Daten beim Besuch unserer Website verarbeiten. Der
+        Schutz Ihrer Daten ist uns ein wichtiges Anliegen.
+      </p>
+
+      <div class="card">
+        <h2>1. Verantwortlicher</h2>
+        <address>
+          Dr. Scharschuh, Zeißler & Partner GbR<br />
+          Wilhelm-Hauff-Weg 11<br />
+          09127 Chemnitz
+        </address>
+        <p>
+          E-Mail:
+          <a href="mailto:info@scharschuh-zeissler-partner.de"
+            >info@scharschuh-zeissler-partner.de</a
+          ><br />
+          Telefon: <a href="tel:+4937123451629">0371 / 23451629</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>2. Schriftarten (Google Fonts)</h2>
+        <p>
+          Diese Website nutzt <strong>Google Fonts</strong> (Anbieter: Google
+          Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Beim
+          Laden der Seite wird Ihre IP-Adresse für den Abruf der Schriftdateien
+          an Google übermittelt. Google kann hierdurch Ihre IP-Adresse
+          registrieren.
+        </p>
+        <p>
+          Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse
+          an einer einheitlichen Darstellung des Webangebots). Weitere
+          Informationen zu Google Fonts und zum Datenschutz bei Google finden
+          Sie unter:
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener"
+            >policies.google.com/privacy</a
+          >.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>3. Kontaktaufnahme per E-Mail oder Telefon</h2>
+        <p>
+          Wenn Sie uns per E-Mail oder Telefon kontaktieren, werden die von
+          Ihnen übermittelten Daten (z. B. Name, E-Mail-Adresse,
+          Nachrichteninhalt) ausschließlich zur Bearbeitung Ihrer Anfrage
+          gespeichert und verarbeitet. Ihre Daten werden nicht ohne Ihre
+          Einwilligung an Dritte weitergegeben.
+        </p>
+        <p>
+          Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung oder
+          -erfüllung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
+          der Bearbeitung von Anfragen). Die Daten werden gelöscht, sobald die
+          Anfrage vollständig bearbeitet ist und keine gesetzlichen
+          Aufbewahrungspflichten entgegenstehen.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>4. Cookies und Tracking</h2>
+        <p>
+          Diese Website verwendet
+          <strong>keine Analyse- oder Tracking-Cookies</strong> und setzt kein
+          Google Analytics, kein Facebook Pixel oder ähnliche Dienste ein. Es
+          werden keine Nutzerprofile erstellt.
+        </p>
+        <p>
+          Technisch notwendige Cookies, die für den Betrieb der Website
+          unbedingt erforderlich sind, werden auf Basis von Art. 6 Abs. 1 lit. f
+          DSGVO (berechtigtes Interesse) eingesetzt. Einer Einwilligung bedarf
+          es hierfür nicht.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>5. Externe Links</h2>
+        <p>
+          Unsere Website enthält Links zu externen Webseiten. Für deren Inhalte
+          sind die jeweiligen Anbieter verantwortlich. Beim Anklicken dieser
+          Links verlassen Sie unsere Website; für die Datenverarbeitung auf den
+          verlinkten Seiten gelten die dortigen Datenschutzbestimmungen.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>6. Ihre Rechte als betroffene Person</h2>
+        <p>
+          Sie haben gegenüber dem Verantwortlichen folgende Rechte hinsichtlich
+          Ihrer personenbezogenen Daten:
+        </p>
+        <ul>
+          <li>
+            <strong>Auskunft</strong> über die verarbeiteten Daten (Art. 15
+            DSGVO)
+          </li>
+          <li>
+            <strong>Berichtigung</strong> unrichtiger Daten (Art. 16 DSGVO)
+          </li>
+          <li><strong>Löschung</strong> Ihrer Daten (Art. 17 DSGVO)</li>
+          <li>
+            <strong>Einschränkung</strong> der Verarbeitung (Art. 18 DSGVO)
+          </li>
+          <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+          <li>
+            <strong>Widerspruch</strong> gegen die Verarbeitung (Art. 21 DSGVO)
+          </li>
+          <li>
+            <strong>Widerruf</strong> einer erteilten Einwilligung mit Wirkung
+            für die Zukunft (Art. 7 Abs. 3 DSGVO)
+          </li>
+        </ul>
+        <p>
+          Zur Ausübung Ihrer Rechte wenden Sie sich per E-Mail an:
+          <a href="mailto:info@scharschuh-zeissler-partner.de"
+            >info@scharschuh-zeissler-partner.de</a
+          >
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>7. Beschwerderecht bei der Aufsichtsbehörde</h2>
+        <p>
+          Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über
+          die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.
+          Zuständige Behörde für Sachsen ist:
+        </p>
+        <address>
+          Sächsischer Datenschutzbeauftragter<br />
+          Devrientstraße 5<br />
+          01067 Dresden<br />
+          <a href="https://www.saechsdsb.de" target="_blank" rel="noopener"
+            >www.saechsdsb.de</a
+          >
+        </address>
+      </div>
+
+      <div class="card">
+        <h2>8. Aktualität dieser Erklärung</h2>
+        <p>
+          Diese Datenschutzerklärung hat den Stand
+          <strong>Juli 2026</strong> und ist aktuell gültig. Durch
+          Weiterentwicklung unserer Website oder aufgrund geänderter
+          gesetzlicher Vorgaben kann es notwendig werden, diese Erklärung
+          anzupassen.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="f-logo">Dr. Scharschuh, Zeißler &amp; Partner</div>
+      <div class="f-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="mailto:info@scharschuh-zeissler-partner.de">Kontakt</a>
+      </div>
+      <div class="f-copy">© 2026 Dr. Scharschuh, Zeißler &amp; Partner</div>
+    </footer>
+  </body>
+</html>

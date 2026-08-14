@@ -1,0 +1,1764 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <title>Dr. Scharschuh, Zeißler & Partner – Management & Consulting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ─── TOKENS ─────────────────────────────────── */
+      :root {
+        --navy: #1a2640;
+        --navy-deep: #111c30;
+        --navy-mid: #243654;
+        --white: #ffffff;
+        --bg: #f5f7fa;
+        --bg-hero: #e8ecf4;
+        --border: #dde3ed;
+        --tx: #1a2640;
+        --tx-soft: #4a5568;
+        --tx-muted: #718096;
+        --sh-sm: 0 1px 4px rgba(26, 38, 64, 0.08);
+        --sh-md: 0 4px 16px rgba(26, 38, 64, 0.12);
+        --sh-nav: 0 2px 20px rgba(26, 38, 64, 0.18);
+      }
+
+      /* ─── RESET ──────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+        background: var(--white);
+        color: var(--tx);
+        line-height: 1.65;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      /* ─── NAV ────────────────────────────────────── */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 300;
+        height: 66px;
+        background: var(--navy);
+        box-shadow: var(--sh-nav);
+        display: flex;
+        align-items: center;
+      }
+      .nav-inner {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 5%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo img {
+        height: 36px;
+        filter: brightness(0) invert(1);
+      }
+      .nav-logo-text {
+        color: #fff;
+        font-weight: 800;
+        font-size: 1.05rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.8rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.82rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: #fff;
+      }
+      .nav-cta {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff !important;
+        padding: 0.4rem 1.1rem;
+        border-radius: 5px;
+        font-weight: 700 !important;
+        transition: background 0.2s !important;
+      }
+      .nav-cta:hover {
+        background: rgba(255, 255, 255, 0.25) !important;
+      }
+
+      /* burger */
+      .burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 38px;
+        height: 38px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .burger span {
+        display: block;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition:
+          transform 0.3s,
+          opacity 0.3s;
+      }
+      .burger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .burger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .burger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* mobile overlay */
+      #mob {
+        display: none;
+        position: fixed;
+        inset: 0;
+        top: 66px;
+        z-index: 290;
+        background: rgba(17, 28, 48, 0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+      }
+      #mob.on {
+        display: flex;
+        opacity: 1;
+        transform: none;
+        pointer-events: all;
+      }
+      #mob a {
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      #mob a:hover {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .mob-pill {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 0.7rem 2.4rem;
+        border-radius: 6px;
+        font-size: 0.95rem !important;
+      }
+
+      /* ─── HERO ───────────────────────────────────── */
+      #hero {
+        margin-top: 66px;
+        background: var(--white);
+        min-height: calc(100svh - 66px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 60px 5% 60px;
+        position: relative;
+        overflow: hidden;
+        gap: 0;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: url("assets/images/hero-bg.jpg") center/cover no-repeat;
+        opacity: 0.08;
+      }
+
+      .hero-logo {
+        height: 300px;
+        margin: 0 auto 3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 2.5rem;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--navy);
+        color: #fff;
+        padding: 0.85rem 2rem;
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        font-family: inherit;
+        box-shadow: var(--sh-md);
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        cursor: pointer;
+        border: none;
+      }
+      .btn-primary:hover {
+        background: var(--navy-deep);
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--white);
+        color: var(--navy);
+        border: 1.5px solid var(--border);
+        padding: 0.85rem 2rem;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        font-family: inherit;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s,
+          transform 0.15s;
+        cursor: pointer;
+      }
+      .btn-ghost:hover {
+        border-color: var(--navy);
+        box-shadow: var(--sh-sm);
+        transform: translateY(-2px);
+      }
+
+      .hero-contacts {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 3rem;
+      }
+      .h-contact {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        color: var(--navy);
+        font-size: 0.9rem;
+        font-weight: 600;
+        box-shadow: var(--sh-sm);
+        transition:
+          box-shadow 0.2s,
+          border-color 0.2s,
+          transform 0.15s;
+      }
+      .h-contact:hover {
+        box-shadow: var(--sh-md);
+        border-color: var(--navy-mid);
+        transform: translateY(-2px);
+      }
+      .h-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--navy);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .h-icon svg {
+        width: 14px;
+        height: 14px;
+        stroke: #fff;
+        fill: none;
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 3.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+      .stat-n {
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--navy);
+        line-height: 1;
+      }
+      .stat-l {
+        font-size: 0.7rem;
+        color: var(--tx-muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+      }
+
+      /* ─── DIVIDER ────────────────────────────────── */
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border),
+          transparent
+        );
+      }
+
+      /* ─── SECTION BASE ───────────────────────────── */
+      .sec {
+        padding: 90px 0;
+      }
+      .sec-sm {
+        padding: 60px 0;
+      }
+      .wrap {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 5%;
+      }
+      .sec-white {
+        background: var(--white);
+      }
+      .sec-gray {
+        background: var(--bg);
+      }
+      .sec-navy {
+        background: var(--navy);
+      }
+      .sec-navy2 {
+        background: var(--navy-deep);
+      }
+
+      /* ─── LABELS & HEADINGS ─────────────────────── */
+      .lbl {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--navy);
+        margin-bottom: 0.8rem;
+      }
+      .lbl::before {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 1.5px;
+        background: currentColor;
+      }
+      .lbl-light {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .lbl-light::before {
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .h2 {
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+        margin-bottom: 0.7rem;
+        color: var(--tx);
+      }
+      .h2-white {
+        color: #fff;
+      }
+      .sub {
+        font-size: 0.95rem;
+        color: var(--tx-muted);
+        max-width: 520px;
+        line-height: 1.7;
+        margin-bottom: 2.8rem;
+      }
+      .sub-white {
+        color: rgba(255, 255, 255, 0.6);
+        max-width: 560px;
+      }
+
+      /* ─── BORDERED CARD (light sections) ────────── */
+      .lcard {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--navy);
+        border-radius: 7px;
+        padding: 1.6rem 1.8rem;
+        box-shadow: var(--sh-sm);
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+      .lcard:hover {
+        box-shadow: var(--sh-md);
+        transform: translateY(-2px);
+      }
+      .lcard-t {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 0.45rem;
+      }
+      .lcard-p {
+        font-size: 0.87rem;
+        color: var(--tx-soft);
+        line-height: 1.65;
+      }
+
+      /* ─── GLASS CARD (dark sections) ────────────── */
+      .dcard {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1.8rem;
+        position: relative;
+        overflow: hidden;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .dcard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0.2)
+        );
+        transition: height 0.35s ease;
+      }
+      .dcard:hover {
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+      }
+      .dcard:hover::before {
+        height: 100%;
+      }
+      .dcard-icon {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+      .dcard-t {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.45rem;
+      }
+      .dcard-p {
+        font-size: 0.86rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.65;
+      }
+
+      /* ─── GRIDS ──────────────────────────────────── */
+      .g2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.3rem;
+      }
+      .g3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.8rem;
+      }
+
+      /* ─── PORTFOLIO ──────────────────────────────── */
+      .port-card {
+        text-align: center;
+        transition: transform 0.25s;
+      }
+      .port-card:hover {
+        transform: translateY(-5px);
+      }
+      .port-circle {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 1.4rem;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        transition: border-color 0.2s;
+      }
+      .port-card:hover .port-circle {
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+      .port-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+      .port-circle-white {
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .port-circle-white img {
+        width: 70%;
+        height: 70%;
+        object-fit: contain;
+      }
+      .port-card:hover .port-circle img {
+        transform: scale(1.07);
+      }
+      .port-t {
+        font-size: 0.97rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+      .port-p {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.65;
+      }
+
+      /* ─── SACHVERSTÄNDIGE ────────────────────────── */
+      .sv-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+      .sv-imgbox {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 1.6rem;
+      }
+      .sv-imgbox img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+      }
+      .sv-h {
+        font-size: 1.7rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 0.9rem;
+        line-height: 1.15;
+      }
+      .sv-p {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+      .sv-list {
+        list-style: none;
+      }
+      .sv-list li {
+        font-size: 0.86rem;
+        color: rgba(255, 255, 255, 0.75);
+        padding: 0.4rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .sv-list li:last-child {
+        border: none;
+      }
+      .sv-list li::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        flex-shrink: 0;
+      }
+
+      .dekra-box {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 2rem;
+      }
+      .dekra-lbl {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 0.8rem;
+      }
+      .dekra-img {
+        height: 52px;
+        margin-bottom: 1.4rem;
+        background: #fff;
+        padding: 7px 14px;
+        border-radius: 8px;
+      }
+      .dekra-h {
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 0.7rem;
+      }
+      .dekra-p {
+        font-size: 0.86rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+      .btn-green {
+        display: block;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #fff;
+        padding: 0.65rem 1.2rem;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 0.84rem;
+        font-family: inherit;
+        margin-bottom: 0.5rem;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .btn-green:hover {
+        background: rgba(255, 255, 255, 0.22);
+        transform: translateY(-1px);
+      }
+
+      /* ─── KRITIS SPLIT ───────────────────────────── */
+      .kritis-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 580px;
+      }
+      .kritis-left {
+        background: var(--white);
+        padding: 90px 6%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .kritis-right {
+        background: url("assets/images/kritis-2.png") center/cover no-repeat;
+        position: relative;
+      }
+      .kritis-right::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, var(--white) 0%, transparent 40%);
+      }
+
+      .k-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.3rem 1.5rem;
+        margin-bottom: 0.9rem;
+        box-shadow: var(--sh-sm);
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .k-card:hover {
+        border-color: var(--navy-mid);
+        box-shadow: var(--sh-md);
+      }
+      .k-icon {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+      .k-t {
+        font-weight: 700;
+        font-size: 0.92rem;
+        color: var(--navy);
+        margin-bottom: 0.3rem;
+      }
+      .k-p {
+        font-size: 0.82rem;
+        color: var(--tx-muted);
+        line-height: 1.55;
+      }
+
+      /* ─── TEAM ───────────────────────────────────── */
+      .team-g {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        max-width: 900px;
+      }
+      .tm-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        overflow: hidden;
+        transition:
+          transform 0.25s,
+          border-color 0.25s;
+      }
+      .tm-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+      .tm-photo {
+        height: 360px;
+        overflow: hidden;
+        position: relative;
+      }
+      .tm-photo::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: linear-gradient(to top, var(--navy) 0%, transparent 100%);
+      }
+      .tm-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 10%;
+        transition: transform 0.4s;
+      }
+      .tm-card:hover .tm-photo img {
+        transform: scale(1.04);
+      }
+      .tm-body {
+        padding: 1.5rem;
+      }
+      .tm-name {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 0.2rem;
+      }
+      .tm-role {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 0.7rem;
+      }
+      .tm-bio {
+        font-size: 0.84rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.65;
+      }
+      .team-note {
+        max-width: 900px;
+        margin-top: 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1.1rem 1.4rem;
+        font-size: 0.86rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.6;
+        display: flex;
+        gap: 0.8rem;
+      }
+
+      /* ─── PARTNER ────────────────────────────────── */
+      .partner-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 360px;
+      }
+      .partner-img {
+        background: url("assets/images/kritis-1.png") center/cover no-repeat;
+        position: relative;
+      }
+      .partner-img::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(220, 228, 242, 0.55);
+      }
+      .partner-right {
+        background: var(--white);
+        padding: 60px 6%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .partner-logos {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+      .partner-logos img {
+        height: 46px;
+        object-fit: contain;
+        transition:
+          transform 0.2s,
+          opacity 0.2s;
+      }
+      .partner-logos img:hover {
+        transform: scale(1.07);
+      }
+
+      /* ─── KONTAKT ────────────────────────────────── */
+      .kontakt-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.3rem;
+        margin-bottom: 2.5rem;
+      }
+      .kontakt-btns {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--white);
+        color: var(--navy);
+        border: 1.5px solid var(--border);
+        padding: 0.75rem 1.8rem;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        font-family: inherit;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s,
+          transform 0.15s;
+      }
+      .btn-outline:hover {
+        border-color: var(--navy);
+        box-shadow: var(--sh-sm);
+        transform: translateY(-1px);
+      }
+
+      /* ─── FAQ ────────────────────────────────────── */
+      .faq-wrap {
+        max-width: 800px;
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--border);
+      }
+      .faq-q {
+        width: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 1.2rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--tx);
+        text-align: left;
+        font-family: inherit;
+        transition: color 0.2s;
+      }
+      .faq-q:hover {
+        color: var(--navy-mid);
+      }
+      .faq-ico {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: rgba(26, 38, 64, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        color: var(--navy);
+        transition:
+          transform 0.3s,
+          background 0.2s;
+      }
+      .faq-item.open .faq-ico {
+        transform: rotate(45deg);
+        background: rgba(26, 38, 64, 0.18);
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.35s ease,
+          padding 0.25s;
+        font-size: 0.87rem;
+        color: var(--tx-soft);
+        line-height: 1.75;
+        padding-bottom: 0;
+        border-left: 2.5px solid rgba(26, 38, 64, 0.25);
+        padding-left: 1rem;
+        margin-left: 0.6rem;
+      }
+      .faq-item.open .faq-a {
+        max-height: 400px;
+        padding-bottom: 1.2rem;
+      }
+
+      /* ─── FOOTER ─────────────────────────────────── */
+      footer {
+        background: var(--navy-deep);
+        padding: 2.5rem 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .f-logo img {
+        height: 30px;
+        filter: brightness(0) invert(1);
+        opacity: 0.45;
+      }
+      .f-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+      .f-links a {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.8rem;
+        transition: color 0.2s;
+      }
+      .f-links a:hover {
+        color: #fff;
+      }
+      .f-copy {
+        color: rgba(255, 255, 255, 0.2);
+        font-size: 0.75rem;
+      }
+
+      /* ─── REVEAL ─────────────────────────────────── */
+      .rev {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ─── RESPONSIVE ─────────────────────────────── */
+      @media (max-width: 1024px) {
+        .sv-split,
+        .kritis-wrap,
+        .partner-split {
+          grid-template-columns: 1fr;
+        }
+        .kritis-right {
+          min-height: 240px;
+        }
+        .kritis-right::after {
+          background: linear-gradient(
+            to bottom,
+            var(--white) 0%,
+            transparent 40%
+          );
+        }
+        .partner-img {
+          min-height: 200px;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .burger {
+          display: flex;
+        }
+        #hero {
+          padding: 50px 5% 50px;
+        }
+        .hero-logo {
+          height: 150px;
+          margin-bottom: 2rem;
+        }
+        .hero-stats {
+          gap: 2rem;
+        }
+        .h-contact {
+          padding: 0.65rem 1.2rem;
+          font-size: 0.83rem;
+        }
+        .g2,
+        .g3,
+        .team-g,
+        .kontakt-cards {
+          grid-template-columns: 1fr;
+        }
+        .kritis-right {
+          display: none;
+        }
+        .kritis-left {
+          padding: 60px 5%;
+        }
+        .sec {
+          padding: 64px 0;
+        }
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero-contacts {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .h-contact {
+          justify-content: center;
+        }
+        .kontakt-btns {
+          flex-direction: column;
+        }
+        .btn-outline,
+        .btn-primary {
+          text-align: center;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav id="nav">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
+          <img
+            src="assets/images/logo-dark.png"
+            alt="SZP"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'block';
+            "
+          />
+          <span class="nav-logo-text" style="display: none">SZ&amp;P</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#portfolio">Leistungen</a></li>
+          <li><a href="#kritis">KRITIS</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#partner">Partner</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+        </ul>
+        <button class="burger" id="burger" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mob">
+      <a href="#portfolio">Leistungen</a>
+      <a href="#kritis">KRITIS</a>
+      <a href="#team">Team</a>
+      <a href="#partner">Partner</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontakt" class="mob-pill">Kontakt aufnehmen</a>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+
+      <img
+        class="hero-logo"
+        src="assets/images/logo-dark.png"
+        alt="Dr. Scharschuh Zeißler & Partner"
+      />
+
+      <div class="hero-contacts">
+        <a href="mailto:info@scharschuh-zeissler-partner.de" class="h-contact">
+          <div class="h-icon">
+            <svg
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+          </div>
+          info@scharschuh-zeissler-partner.de
+        </a>
+        <a href="tel:+4937123451629" class="h-contact">
+          <div class="h-icon">
+            <svg
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"
+              />
+            </svg>
+          </div>
+          0371 / 23451629
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="stat-n">20+</div>
+          <div class="stat-l">Jahre Erfahrung</div>
+        </div>
+        <div>
+          <div class="stat-n">6</div>
+          <div class="stat-l">Kernleistungen</div>
+        </div>
+        <div>
+          <div class="stat-n">3</div>
+          <div class="stat-l">Zertifizierungen</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="sec sec-navy">
+      <div class="wrap">
+        <div class="rev">
+          <div class="lbl lbl-light">Portfolio</div>
+          <h2 class="h2 h2-white">Unser Portfolio</h2>
+          <p class="sub sub-white">
+            Umfassende Expertise im Bereich Sicherheitsmanagement
+          </p>
+        </div>
+        <div class="g3 rev">
+          <div class="port-card">
+            <div class="port-circle">
+              <img src="assets/images/qd.png" alt="Notfall" />
+            </div>
+            <div class="port-t">Notfall- &amp; Krisenmanagement</div>
+            <p class="port-p">
+              Krisenstab, Pressearbeit, physische Resilienz und Krisenhandbücher
+              – Sicherheit auf ganzer Linie durch strategische Planung.
+            </p>
+          </div>
+          <div class="port-card">
+            <div class="port-circle">
+              <img src="assets/images/hero-bg.jpg" alt="KRITIS" />
+            </div>
+            <div class="port-t">KRITIS-Schutz</div>
+            <p class="port-p">
+              Professionelle Sicherheitssysteme, individuell angepasst unter
+              Berücksichtigung aller gesetzlichen Vorgaben und EU-Richtlinien.
+            </p>
+          </div>
+          <div class="port-card">
+            <div class="port-circle">
+              <img src="assets/images/krankenhaus.png" alt="KAEP" />
+            </div>
+            <div class="port-t">Klinik-Alarm- &amp; Einsatzplanung (KAEP)</div>
+            <p class="port-p">
+              Praxisorientierte Notfallplanung für Kliniken – von MANV bis
+              IT-Ausfall, immer mit allen Sicherheitsaspekten versehen.
+            </p>
+          </div>
+          <div class="port-card">
+            <div class="port-circle">
+              <img src="assets/images/afaf.png" alt="Fachgutachten" />
+            </div>
+            <div class="port-t">Fachgutachten</div>
+            <p class="port-p">
+              Zertifizierte (DGuSV) Fach- und Gerichtsgutachten als
+              Sachverständiger für KRITIS- und Kliniknotfallmanagement sowie für
+              Arbeitssicherheits- und Sicherheitsmanagement.
+            </p>
+          </div>
+          <div class="port-card">
+            <div class="port-circle port-circle-white">
+              <img src="assets/images/dekra.png" alt="DEKRA" />
+            </div>
+            <div class="port-t">Personenzertifizierung (DEKRA)</div>
+            <p class="port-p">
+              Qualifizierte Schulungen für Notfallmanager in
+              KRITIS-Einrichtungen und Krankenhäusern – zertifiziert durch die
+              DEKRA.
+            </p>
+          </div>
+          <div class="port-card">
+            <div class="port-circle">
+              <img src="assets/images/aff.png" alt="Arbeitssicherheit" />
+            </div>
+            <div class="port-t">Arbeitssicherheit &amp; Brandschutz</div>
+            <p class="port-p">
+              Externe Fachkraft für Arbeitssicherheit (SiFa),
+              Brandschutzberatung und Gefährdungsbeurteilungen – rechtssicher
+              und praxisnah.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARBEITSSICHERHEIT -->
+    <section class="sec sec-white">
+      <div class="wrap">
+        <div class="rev">
+          <div class="lbl">Sicherheit</div>
+          <h2 class="h2">Arbeitssicherheit &amp; Brandschutz</h2>
+          <p class="sub">
+            Professioneller Schutz für Ihre Mitarbeiter und Ihr Unternehmen.
+          </p>
+        </div>
+        <div class="g2 rev">
+          <div class="lcard">
+            <div class="lcard-t">
+              Externe Fachkraft für Arbeitssicherheit (SiFa)
+            </div>
+            <p class="lcard-p">
+              Umfassende Beratung und branchenübergreifende Betreuung nach ASiG
+              und DGUV-Vorschriften.
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">Brandschutzberatung</div>
+            <p class="lcard-p">
+              Professionelle Brandschutzberatung und Übernahme der Funktion des
+              Brandschutzbeauftragten.
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">
+              Risikoanalysen &amp; Gefährdungsbeurteilungen
+            </div>
+            <p class="lcard-p">
+              Systematische Risikoanalysen und Gefährdungsbeurteilungen für
+              Ihren Betrieb.
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">Aufbau betrieblicher Arbeitsschutz</div>
+            <p class="lcard-p">
+              Strukturierter Aufbau und Organisation des betrieblichen
+              Arbeitsschutzsystems.
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">Betriebliches Gesundheitsmanagement</div>
+            <p class="lcard-p">
+              Unterstützung und Integration des Betrieblichen
+              Gesundheitsmanagements (BGM).
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">Koordination &amp; Zusammenarbeit</div>
+            <p class="lcard-p">
+              Koordination mit Arbeitsmedizinern und weiteren Fachstellen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SACHVERSTÄNDIGE -->
+    <section class="sec sec-navy2">
+      <div class="wrap">
+        <div class="rev">
+          <div class="lbl lbl-light">Expertise</div>
+          <h2 class="h2 h2-white">
+            Sachverständigentätigkeit &amp; Schulungen
+          </h2>
+        </div>
+        <div class="sv-split rev">
+          <div>
+            <div class="sv-imgbox">
+              <img
+                src="https://scharschuh-zeissler-partner.de/wp-content/uploads/elementor/thumbs/iStock-1321364970-scaled-e1706014078871-qlatkptq7dasupmijhhz33sjijop98fzocnblpkrhc.jpg"
+                alt="Fachgutachten"
+                onerror="this.parentElement.style.display = 'none'"
+              />
+            </div>
+            <div class="sv-h">Fachgutachten</div>
+            <p class="sv-p">
+              Zertifizierte (DGuSV) Fach- und Gerichtsgutachten als
+              Sachverständiger für KRITIS- und Kliniknotfallmanagement sowie für
+              Arbeitssicherheits- und Sicherheitsmanagement.
+            </p>
+            <ul class="sv-list">
+              <li>Gutachten zur Einsatzqualität im Rettungsdienst</li>
+              <li>Bewertung notfallmedizinischer Versorgung</li>
+              <li>Analyse von Notfallabläufen in Kliniken</li>
+              <li>Prüfung von Notfallplänen</li>
+            </ul>
+          </div>
+          <div class="dekra-box">
+            <img class="dekra-img" src="assets/images/dekra.png" alt="DEKRA" />
+            <div class="dekra-h">
+              Personenzertifizierung
+              <span style="font-weight: 400">(DEKRA)</span>
+            </div>
+            <p class="dekra-p">
+              Qualifizierte Schulungen für Notfallmanager in
+              KRITIS-Einrichtungen und Krankenhäusern in Zusammenarbeit mit der
+              DEKRA.
+            </p>
+            <ul class="sv-list" style="margin-bottom: 1.5rem">
+              <li>Notfallmanager in KRITIS-Einrichtungen (DEKRA)</li>
+              <li>Notfallmanager im Krankenhaus (DEKRA)</li>
+            </ul>
+            <a
+              href="https://www.dekra-akademie.de/produkte/notfallmanager-in-kritis-einrichtungen-dekra-weiterbildung"
+              class="btn-green"
+              target="_blank"
+              >Notfallmanager in KRITIS-Einrichtungen (DEKRA)</a
+            >
+            <a
+              href="https://www.dekra-akademie.de/produkte/notfallmanager-im-krankenhaus-dekra-weiterbildung"
+              class="btn-green"
+              target="_blank"
+              >Notfallmanager im Krankenhaus (DEKRA)</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KRITIS SPLIT -->
+    <section id="kritis" style="padding: 0" class="rev">
+      <div class="kritis-wrap">
+        <div class="kritis-left">
+          <div class="lbl">Regulatorik</div>
+          <h2 class="h2">KRITIS-Dachgesetz &amp; EU-Richtlinien</h2>
+          <p class="sub" style="margin-bottom: 2rem">
+            Verstehen Sie die Anforderungen und bleiben Sie compliant.
+          </p>
+          <div class="k-card">
+            <div class="k-icon">👥</div>
+            <div class="k-t">EU RCE-Directive (2022/2557)</div>
+            <p class="k-p">
+              Regelt die Widerstandsfähigkeit kritischer Infrastrukturen.
+              Umsetzung bis Oktober 2024 in nationales Recht verpflichtend.
+            </p>
+          </div>
+          <div class="k-card">
+            <div class="k-icon">🛡</div>
+            <div class="k-t">KRITIS-Dachgesetz</div>
+            <p class="k-p">
+              Nationale Umsetzung der EU-Vorgaben. Verpflichtet Betreiber aus
+              elf KRITIS-Sektoren zur Erstellung von Resilienzplänen.
+            </p>
+          </div>
+          <div class="k-card">
+            <div class="k-icon">💻</div>
+            <div class="k-t">NIS2-Umsetzungsgesetz</div>
+            <p class="k-p">
+              Deutlich erhöhte Sicherheitsanforderungen für Cybersicherheit und
+              erweiterte Zahl betroffener Unternehmen.
+            </p>
+          </div>
+        </div>
+        <div class="kritis-right"></div>
+      </div>
+    </section>
+
+    <!-- KERNELEMENTE -->
+    <section class="sec sec-gray">
+      <div class="wrap">
+        <div class="rev">
+          <div class="lbl">Resilienz</div>
+          <h2 class="h2">Kernelemente des Resilienzmanagements</h2>
+          <p class="sub">
+            Erfüllen Sie die gesetzlichen Anforderungen mit unserem
+            systematischen Ansatz.
+          </p>
+        </div>
+        <div class="g2 rev">
+          <div class="lcard">
+            <div class="lcard-t">Risiko- &amp; Krisenmanagement</div>
+            <p class="lcard-p">
+              Aufbau strukturierter Systeme zur Identifikation und Bewältigung
+              von Risiken.
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">Risikoanalysen</div>
+            <p class="lcard-p">
+              Durchführung systematischer Analysen und Bewertungen aller
+              relevanten Risiken.
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">Resilienzpläne</div>
+            <p class="lcard-p">
+              Erstellung umfassender Pläne gemäß gesetzlicher Vorgaben und
+              EU-Standards.
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">Maßnahmenumsetzung</div>
+            <p class="lcard-p">
+              Technische, personelle und organisatorische Schutzmaßnahmen
+              implementieren.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="sec sec-navy">
+      <div class="wrap">
+        <div class="rev">
+          <div class="lbl lbl-light">Über uns</div>
+          <h2 class="h2 h2-white">Das Team</h2>
+          <p class="sub sub-white">
+            Expertise und Erfahrung für Ihre Sicherheit.
+          </p>
+        </div>
+        <div class="team-g rev">
+          <div class="tm-card">
+            <div class="tm-photo">
+              <img
+                src="assets/images/dr.Tom.png"
+                alt="Dr. Tom Scharschuh"
+                style="object-position: center 15%"
+              />
+            </div>
+            <div class="tm-body">
+              <div class="tm-name">Dr. Tom Scharschuh</div>
+              <div class="tm-role">Gründer &amp; Managing Partner</div>
+              <p class="tm-bio">
+                Mehr als 20 Jahre Erfahrung im internationalen Prozess-,
+                Programm- und Projektmanagement. Stabsoffizier der Bundeswehr,
+                Experte für Notfall- &amp; Krisenmanagement.
+              </p>
+            </div>
+          </div>
+          <div class="tm-card">
+            <div class="tm-photo">
+              <img
+                src="assets/images/zeissler.jpg"
+                alt="Lucas Zeißler"
+                style="object-position: center 5%"
+              />
+            </div>
+            <div class="tm-body">
+              <div class="tm-name">Lucas Zeißler</div>
+              <div class="tm-role">Gründer &amp; Managing Partner</div>
+              <p class="tm-bio">
+                Spezialist für KRITIS, KAEP und Notfall- &amp; Krisenmanagement.
+                Fachkraft für Arbeitssicherheit, zertifizierter Gutachter,
+                DAKPE-Mitglied und HSE-Experte.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="team-note rev">
+          <span>ℹ</span>
+          <span
+            >Neben unseren Gründungspartnern verfügen wir über ein erfahrenes
+            Team aus Backoffice-Mitarbeitern sowie weiteren Partnern für
+            Consulting, Management und Administration.</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNER -->
+    <section id="partner" style="padding: 0" class="rev">
+      <div class="partner-split">
+        <div class="partner-img"></div>
+        <div class="partner-right">
+          <div class="lbl">Kooperationen</div>
+          <h2 class="h2">Unsere Partnerschaften</h2>
+          <p class="sub">
+            Zertifizierte Qualität durch starke Kooperationen mit führenden
+            Institutionen.
+          </p>
+          <div class="partner-logos">
+            <img
+              src="assets/images/dakep.png"
+              alt="DAKEP"
+              style="height: 42px"
+            />
+            <img
+              src="assets/images/dekra.png"
+              alt="DEKRA"
+              style="height: 38px"
+            />
+            <img
+              src="assets/images/DGuSV_mS.png"
+              alt="DGuSV"
+              style="height: 38px"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="sec sec-white">
+      <div class="wrap" style="text-align: center">
+        <div class="rev" style="max-width: 640px; margin: 0 auto">
+          <div class="lbl" style="justify-content: center">Kontakt</div>
+          <h2 class="h2">Kontaktieren Sie uns!</h2>
+          <p class="sub" style="margin: 0 auto 1.8rem">
+            Lassen Sie uns gemeinsam Ihre Sicherheit und Resilienz stärken.
+          </p>
+        </div>
+        <div class="kontakt-cards rev">
+          <div class="lcard">
+            <div class="lcard-t">Persönliche Beratung</div>
+            <p class="lcard-p">
+              Termin vereinbaren für ein individuelles Gespräch – wir
+              analysieren Ihre Anforderungen und entwickeln maßgeschneiderte
+              Lösungen.
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">Schnelle Kontaktaufnahme</div>
+            <p class="lcard-p">
+              Per E-Mail, Telefon oder Kontaktformular – wir melden uns zeitnah
+              bei Ihnen zurück.
+            </p>
+          </div>
+          <div class="lcard">
+            <div class="lcard-t">Vor-Ort-Termine</div>
+            <p class="lcard-p">
+              Wir besuchen Sie in Ihrem Unternehmen und erarbeiten konkrete
+              Handlungsempfehlungen.
+            </p>
+          </div>
+        </div>
+        <div class="kontakt-btns rev">
+          <a
+            href="mailto:info@scharschuh-zeissler-partner.de"
+            class="btn-primary"
+            >✉ info@scharschuh-zeissler-partner.de</a
+          >
+          <a href="tel:+4937123451629" class="btn-outline"
+            >📞 0371 / 23451629</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="sec sec-gray">
+      <div class="wrap">
+        <div class="rev">
+          <div class="lbl">FAQ</div>
+          <h2 class="h2">Häufig gestellte Fragen</h2>
+        </div>
+        <div class="faq-wrap rev">
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Was bedeutet KRITIS-Schutz?
+            </button>
+            <div class="faq-a">
+              KRITIS-Schutz sichert Verfügbarkeit und Integrität kritischer
+              Infrastrukturen durch technische und IT-Sicherheit, Objektschutz
+              sowie organisatorische Prävention.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Warum sind zertifizierte
+              KRITIS-Schulungen notwendig?
+            </button>
+            <div class="faq-a">
+              Qualifiziertes Personal ist essenziell, um im Ernstfall schnell
+              und rechtssicher zu handeln. Fehlende Kompetenz kann zu Schäden,
+              Bußgeldern und Reputationsverlust führen.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Was ist Business Continuity
+              Management?
+            </button>
+            <div class="faq-a">
+              BCMS ist ein integraler Bestandteil des betrieblichen
+              Resilienzmanagements – stufenweise implementierbar und mit anderen
+              Managementsystemen synchronisierbar.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Was beinhaltet die Klinik-Alarm-
+              &amp; Einsatzplanung (KAEP)?
+            </button>
+            <div class="faq-a">
+              KAEP umfasst Alarm- und Einsatzpläne für Kliniken – inklusive
+              Kommunikationsstrukturen, Evakuierungskonzepten und Koordination
+              mit externen Kräften bei Großschadensereignissen.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Welche rechtlichen Anforderungen
+              gelten für Resilienzpläne?
+            </button>
+            <div class="faq-a">
+              Die Anforderungen ergeben sich aus BSI-Gesetz,
+              IT-Sicherheitsgesetz und branchenspezifischen KRITIS-Vorgaben. Wir
+              unterstützen bei Einhaltung und Zertifizierung.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Brauche ich Arbeitssicherheit und
+              Brandschutz?
+            </button>
+            <div class="faq-a">
+              Ja – das ASiG verpflichtet Unternehmen zur Bestellung einer
+              Fachkraft für Arbeitssicherheit. Nicht-Einhaltung kann zu
+              Bußgeldern, Haftungsrisiken und Versicherungsproblemen führen.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span class="faq-ico">+</span>Wo bekomme ich ein Gutachten im
+              Bereich Notfallmedizin?
+            </button>
+            <div class="faq-a">
+              Dr. Scharschuh, Zeißler &amp; Partner bietet DGuSV-zertifizierte
+              Gutachten für Gerichte, Versicherungen und Organisationen.
+              Kontaktieren Sie uns für Ihren spezifischen Fall.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="f-logo">
+        <img src="assets/images/logo-dark.png" alt="SZP" />
+      </div>
+      <ul class="f-links">
+        <li>
+          <a href="impressum.html">Impressum</a>
+        </li>
+        <li>
+          <a href="datenschutz.html">Datenschutz</a>
+        </li>
+        <li>
+          <a href="mailto:info@scharschuh-zeissler-partner.de">Kontakt</a>
+        </li>
+      </ul>
+      <div class="f-copy">© 2026 Dr. Scharschuh, Zeißler &amp; Partner</div>
+    </footer>
+
+    <script>
+      // Burger
+      const burger = document.getElementById("burger");
+      const mob = document.getElementById("mob");
+      burger.addEventListener("click", () => {
+        const open = mob.classList.toggle("on");
+        burger.classList.toggle("open", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      });
+      mob.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          mob.classList.remove("on");
+          burger.classList.remove("open");
+          document.body.style.overflow = "";
+        }),
+      );
+
+      // FAQ
+      document.querySelectorAll(".faq-q").forEach((q) => {
+        q.addEventListener("click", () => {
+          const item = q.closest(".faq-item");
+          const was = item.classList.contains("open");
+          document
+            .querySelectorAll(".faq-item.open")
+            .forEach((el) => el.classList.remove("open"));
+          if (!was) item.classList.add("open");
+        });
+      });
+
+      // Scroll reveal
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.07, rootMargin: "0px 0px -24px 0px" },
+      );
+      document.querySelectorAll(".rev").forEach((el) => obs.observe(el));
+    </script>
+  </body>
+</html>
