@@ -716,6 +716,67 @@
       }
       .dgusv-banner__btn:hover { background: #e8ecf4; transform: translateY(-2px); }
 
+      /* ─── BUCH ───────────────────────────────────── */
+      .buch-layout {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 56px;
+        align-items: center;
+      }
+      .buch-cover {
+        border-radius: 8px;
+        box-shadow: var(--sh-md);
+        width: 100%;
+        display: block;
+      }
+      .buch-meta {
+        display: flex;
+        gap: 20px 32px;
+        flex-wrap: wrap;
+        margin: 20px 0 28px;
+      }
+      .buch-meta-item {
+        font-size: 14px;
+        color: var(--tx-soft);
+      }
+      .buch-meta-item strong {
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--tx-muted);
+        margin-bottom: 2px;
+      }
+      .buch-btn {
+        display: inline-block;
+        background: var(--navy);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 14px 28px;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .buch-btn:hover { background: var(--navy-mid); transform: translateY(-2px); }
+      .buch-badge {
+        display: inline-block;
+        background: #fef3c7;
+        color: #92400e;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-bottom: 14px;
+      }
+      @media (max-width: 700px) {
+        .buch-layout { grid-template-columns: 1fr; gap: 28px; }
+        .buch-cover { max-width: 180px; }
+      }
+
       /* ─── KRITIS SPLIT ───────────────────────────── */
       .kritis-wrap {
         display: grid;
@@ -1603,6 +1664,43 @@
               alt="DGuSV"
               style="height: 38px"
             />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLIKATION -->
+    <section class="sec sec-gray">
+      <div class="wrap rev">
+        <div class="lbl">Neue Publikation</div>
+        <h2 class="h2">Unser Fachbuch</h2>
+        <p class="sub" style="margin-bottom: 48px;">Jetzt vorbestellbar – erscheint im Dezember 2026 im Kohlhammer Verlag.</p>
+        <div class="buch-layout">
+          <img
+            src="https://images.thalia.media/07/-/383f4e62dac74548808b777a3287cad8/kritis-im-fokus-taschenbuch-lucas-zeissler.jpeg"
+            alt="Buchcover: KRITIS im Fokus"
+            class="buch-cover"
+            loading="lazy"
+          />
+          <div>
+            <span class="buch-badge">Vorbestellung · Erscheint 31.12.2026</span>
+            <h3 style="font-size: 1.9rem; font-weight: 800; color: var(--navy); line-height: 1.15; margin-bottom: 10px;">KRITIS im Fokus</h3>
+            <p style="font-size: 1rem; color: var(--tx-soft); margin-bottom: 4px; font-weight: 600;">Handlungsempfehlungen für Betreiber Kritischer Infrastrukturen</p>
+            <div class="buch-meta">
+              <div class="buch-meta-item"><strong>Autoren</strong>Lucas Zeißler &amp; Dr. Tom Scharschuh</div>
+              <div class="buch-meta-item"><strong>Verlag</strong>Kohlhammer</div>
+              <div class="buch-meta-item"><strong>Umfang</strong>200 Seiten</div>
+              <div class="buch-meta-item"><strong>Preis</strong>39,00 €</div>
+              <div class="buch-meta-item"><strong>ISBN</strong>978-3-17-047781-0</div>
+            </div>
+            <a
+              href="https://www.thalia.de/shop/home/artikeldetails/A1079664619"
+              target="_blank"
+              rel="noopener"
+              class="buch-btn"
+            >
+              Jetzt vorbestellen bei Thalia →
+            </a>
           </div>
         </div>
       </div>
