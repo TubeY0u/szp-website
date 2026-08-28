@@ -4,7 +4,7 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "liveServer.settings.donotShowInfoMsg": true,
-  "liveServer.settings.port": 5500,
+  "liveServer.settings.port": 5501,
   "liveServer.settings.CustomBrowser": "chrome",
   "files.associations": { "*.html": "html" },
   "emmet.includeLanguages": { "html": "html" },
